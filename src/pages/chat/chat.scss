@@ -1,0 +1,68 @@
+.chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: calc(100% - 81px);
+
+    .chat__user-input {
+        border-top: 2px solid rgba(0, 0, 0, 0.24);
+        height: 80px;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+
+        button {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            outline: none;
+            background-color: inherit;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 13px;
+            transition: background-color 200ms linear;
+
+            &:hover {
+                background-color: rgb(212, 212, 212);
+            }
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .user-input_text {
+            margin-right: 20px;
+            border-radius: 10px;
+            height: 24px;
+            border: none;
+            background-color: rgb(212, 212, 212);
+            padding: 10px 10px 5px;
+            font-size: 14px;
+            font-family: 'Lato', sans-serif;
+            resize: none;
+            width: 100%;
+            outline: none;
+
+            &::-webkit-scrollbar {
+                visibility: hidden;
+                width: 0;
+            }
+        }
+
+        .user-input_smiles {
+            margin-right: 0;
+            padding-left: 13.5px;
+            height: 42px;
+            width: 42px;
+            
+            img {
+                width: 15px;
+            }
+        }
+    }
+
+    
+}

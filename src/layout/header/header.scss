@@ -1,0 +1,88 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 81px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.24);
+    padding: 0 23.5px;
+
+    img {
+        height: 15px;
+        width: 15.5px;
+    }
+
+    &__chat-name {
+        display: flex;
+        align-items: center;
+        width: 100px;
+        cursor: pointer;
+
+        .chat-name {
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    }
+
+    &__chat-interactive-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        div, .chat-interactive-menu__more-button {
+            margin-right: 23px;
+        }
+
+        .chat-interactive-menu__members-count {
+            display: flex;
+            align-items: center;
+
+            p {
+                font-weight: 400;
+                font-size: 14px;
+                color: #A4A4A4;
+                cursor: default;
+            }
+        }
+
+        .chat-interactive-menu__search-input {
+            display: flex;
+            align-items: center;
+            border: 0.5px solid rgba(0, 0, 0, 0.24);
+            border-radius: 5px;
+
+            input {
+                border: none;
+                outline: none;
+                font-weight: 400;
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            img {
+                margin-right: 15px;
+            }
+        }
+
+        .chat-interactive-menu__notifications-button {
+            position: relative;
+            width: 14.5px;
+            height: 15.5px;
+            cursor: pointer;
+
+            .notifications-button_indicator {
+                position: absolute;
+                width: 5px;
+                height: 5px;
+                background-color: #FD4948;
+                left: 11.5px;
+                bottom: 14.5px;
+                border-radius: 50%;
+            }
+        }
+
+        .chat-interactive-menu__more-button {
+            cursor: pointer;
+            margin: 0;
+        }
+    }
+}
