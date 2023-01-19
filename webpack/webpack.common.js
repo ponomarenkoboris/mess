@@ -8,7 +8,8 @@ module.exports = {
     resolve: {
         alias: {
             "@assets": path.resolve(__dirname, '..', 'assets'),
-            "@utils": path.resolve(__dirname, '..', 'src/utils')
+            "@utils": path.resolve(__dirname, '..', 'src/utils'),
+            "@context": path.resolve(__dirname, '..', 'src/context')
         },
         extensions: ['.tsx', '.ts', '.js'],
     },
@@ -25,7 +26,7 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,

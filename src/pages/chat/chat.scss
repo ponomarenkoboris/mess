@@ -33,22 +33,49 @@
             display: none;
         }
 
-        .user-input_text {
+        .user-input_text, .user-input_uploaded-file {
             margin-right: 20px;
             border-radius: 10px;
             height: 24px;
-            border: none;
+            padding: 10px 10px 10px;
+            width: 100%;
             background-color: rgb(212, 212, 212);
-            padding: 10px 10px 5px;
+
+            img {
+                width: 20px;
+            }
+        }
+
+        .user-input_text {
+            border: none;
+            padding-bottom: 5px;
             font-size: 14px;
             font-family: 'Lato', sans-serif;
             resize: none;
-            width: 100%;
             outline: none;
 
             &::-webkit-scrollbar {
                 visibility: hidden;
                 width: 0;
+            }
+        }
+
+        .user-input_uploaded-file {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .file-wrapper, .send-remove-buttons {
+                display: flex;
+                align-items: center;
+
+                img {
+                    margin-right: 4px;
+                }
+            }
+
+            .send-remove-buttons button {
+                margin: 0;
             }
         }
 

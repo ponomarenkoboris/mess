@@ -1,9 +1,10 @@
 import { FC } from 'react'
+import { RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom'
+import { ChatContextProvider } from '@context/ChatContext'
 import { Layout } from './layout/Layout'
 import { Chat } from './pages/chat/Chat'
 import { SignIn } from './pages/signin/SignIn'
 import { SignUp } from './pages/signup/SignUp'
-import { RouterProvider, createBrowserRouter, Outlet, Navigate, useLocation } from 'react-router-dom'
 
 export const App: FC = () => {
     const router = createBrowserRouter([
@@ -13,11 +14,7 @@ export const App: FC = () => {
             children: [
                 {
                     path: ':chatId',
-                    element: <Chat />
-                },
-                {
-                    path: '/chat/text',
-                    element: <h1>text</h1>
+                    element: <ChatContextProvider><Chat /></ChatContextProvider>
                 }
             ]
         },

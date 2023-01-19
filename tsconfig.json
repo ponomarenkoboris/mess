@@ -15,7 +15,8 @@
         "baseUrl": "./",
         "paths": {
             "@assets/*": ["assets/*"],
-            "@utils/*": ["src/utils/*"]
+            "@utils/*": ["src/utils/*"],
+            "@context/*": ["src/context/*"]
         }
     },
     "include": ["src/**/*", "types.d.ts"],
