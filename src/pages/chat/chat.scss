@@ -27,6 +27,10 @@
             &:hover {
                 background-color: rgb(212, 212, 212);
             }
+
+            &:active {
+                background-color: rgb(170, 169, 169);
+            }
         }
 
         input[type="file"] {

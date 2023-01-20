@@ -1,5 +1,175 @@
-.right-sidebar {
-    width: 201px;
+$ligh-gray-color: #5F6164;
 
-    
+.right-sidebar {
+    position: relative;
+    width: 201px;
+    background-color: #e2e2e2;
+
+    .user-avatar {
+        margin-bottom: 20px;
+    }
+
+    .sidebar__menu {
+        padding: 0 20px 28px;
+
+        .user-main-info {
+            margin-bottom: 20px;
+
+            &__name {
+                font-size: 16px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+
+                p {
+                    margin: 0 5.5px 4px 0;
+                }
+            }
+
+            &__position {
+                font-size: 12px;
+                font-weight: 400;
+                color: $ligh-gray-color;
+                margin: 0;
+            }
+
+            &__status {
+                width: 8px;
+                height: 8px;
+                background-color: #70CC16;
+                border-radius: 50%;
+            }
+        }
+
+        .user-social-links {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            
+            .user-social-link__wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 22px;
+                height: 22px;
+                background-color: #ffffff;
+                border-radius: 50%;
+                margin-right: 7.5px;
+                cursor: pointer;
+                transition: background-color 200ms linear;
+                
+                &:hover {
+                    background-color: rgb(212, 212, 212);
+                }
+
+                &:active {
+                    background-color: rgb(170, 169, 169);
+                }
+            }
+        }
+
+        .user-interaction {
+            margin-bottom: 15px;
+            position: relative;
+            
+            .interaction__buttons {
+                display: flex;
+                color: #ffffff;
+
+                button {
+                    background-color: #3577EF;
+                    border: none;
+                    outline: none;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .interaction__btn {
+                    width: 133.5px;
+                    margin-right: 2.5px;
+                    color: #ffffff;
+                    padding: 4px;
+                }
+            }
+
+            .interaction__list {
+                position: absolute;
+                width: 100%;
+                margin-top: 2.5px;
+                background-color: #3577EF;
+                color: #fff;
+                list-style: none;
+                border-radius: 3px;
+                padding: 6px 0;
+
+                .hidden {
+                    display: none;
+                }
+
+                li {
+                    text-align: center;
+                    cursor: pointer;
+                    padding: 4px 0;
+                    border-radius: 3px;
+                    transition: background-color 200ms ease-in-out;
+                    
+
+                    &:hover {
+                        background-color: rgba($color: #fff, $alpha: .1);
+                    }
+                }
+            }
+        }
+
+        .user-info {
+            .user-info__username,
+            .user-info__email,
+            .user-info__skype {
+                margin-bottom: 11px;
+            }
+
+            .username__type,
+            .email__type,
+            .skype__type,
+            .timezone__type {
+                margin: 0;
+                font-size: 12px;
+                color: $ligh-gray-color;
+            }
+
+            .username,
+            .email,
+            .skype,
+            .timezone {
+                margin: 0;
+                font-size: 14px;
+            }
+ 
+        }
+    }
+
+    .sidebar-open__button {
+        position: absolute;
+        bottom: 28px;
+        right: 23px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: initial;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transition: background-color 200ms linear;
+
+        &:hover {
+            background-color: rgb(212, 212, 212);
+        }
+
+        &:active {
+            background-color: rgb(170, 169, 169);
+        }
+    }
 }
