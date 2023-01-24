@@ -1,13 +1,18 @@
 import { useReducer, createContext, ReactNode, Dispatch, FC } from 'react'
 
-export type MessageType = File | string
-export type ActionCreator = { type: ActionType, payload?: MessageType }
+type MessageType = 'file' | 'text' | 'audio'
+export type Message = {
+    type: MessageType,
+    value: File | string
+}
+export type ActionCreator = { type: ActionType, payload?: Message }
 type ChatContextType = [
-    MessageType,
+    Message,
     Dispatch<ActionCreator>
 ]
 
-const initialState: ChatContextType = ['', () => {}]
+const defaultState: Message = { type: 'text', value: '' }
+const initialState: ChatContextType = [defaultState, () => {}]
 const ChatInputContext = createContext<ChatContextType>(initialState)
 
 enum ActionType {
@@ -17,16 +22,26 @@ enum ActionType {
     RESET = 'RESET'
 }
 
-const reducer = (state: MessageType, action: ActionCreator) => {
+const reducer = (state: Message, action: ActionCreator): Message => {
     switch(action.type) {
         case ActionType.TEXT:
-            return action.payload as string
+            const textMessage = action.payload
+            if (!textMessage) return state
+            return { type: textMessage.type, value: textMessage.value }
+
         case ActionType.DOCUMENT:
-            return action.payload as File
-        // case ActionType.VOICE:
-            // return action.payload as string
+            const fileMessage = action.payload
+            if (!fileMessage) return state
+            return { type: fileMessage.type, value: fileMessage.value }
+
+        case ActionType.VOICE:
+            const audioMessage = action.payload
+            if (!audioMessage) return state
+            return { type: audioMessage.type, value: audioMessage.value }
+
         case ActionType.RESET:
-            return ''
+            return { type: 'text', value: '' }
+
         default: 
             return state
     }
@@ -34,7 +49,7 @@ const reducer = (state: MessageType, action: ActionCreator) => {
 
 type ChatContextProviderProps = { children: ReactNode }
 const ChatContextProvider: FC<ChatContextProviderProps> = ({ children }) => {
-    const [value, dispatch] = useReducer(reducer, '')
+    const [value, dispatch] = useReducer(reducer, defaultState)
 
     return <ChatInputContext.Provider value={[value, dispatch]}>{children}</ChatInputContext.Provider>
 }
@@ -43,4 +58,5 @@ export {
     ChatContextProvider,
     ActionType,
     ChatInputContext,
+    defaultState
 }

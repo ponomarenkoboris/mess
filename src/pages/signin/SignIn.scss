@@ -1,0 +1,83 @@
+.sign-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h1 {
+        font-size: 64px;
+        font-weight: 400;
+        margin: 0 0 39px;
+    }
+    
+    p {
+        font-weight: 400;
+        font-size: 16px;
+        margin: 0 0 36px;
+    }
+    
+    .sign-in__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        @media (max-width: 415px) {
+            input[type="email"], input[type="password"] {
+                width: 235px !important;
+            }
+        }
+    
+        input[type="email"], input[type="password"] {
+            width: 335px;
+            margin-bottom: 32px;
+            border-radius: 10px;
+            background-color: #224957;
+            outline: none;
+            border: none;
+            color: #ffffff;
+            padding: 12px 18px;
+            font-size: 14px;
+        }
+    
+        .form__actions {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+    
+            .action__remember {
+                display: flex;
+                align-items: center;
+                
+                label {
+                    cursor: pointer;
+                }
+            }
+    
+            .action__forgot-pass {
+                color: #20DF7F;
+                font-size: 14px;
+                margin: 0;
+                cursor: pointer;
+            }
+        }
+    
+        .form__submit-btn {
+            width: 100%;
+            height: 45px;
+            cursor: pointer;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #20DF7F;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            outline: none;
+            border: none;
+        }
+    }
+}

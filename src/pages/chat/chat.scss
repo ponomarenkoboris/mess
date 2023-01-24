@@ -69,6 +69,10 @@
             align-items: center;
             justify-content: space-between;
 
+            .audio-wrapper {
+                // TODO append styles for audio player
+            }
+
             .file-wrapper, .send-remove-buttons {
                 display: flex;
                 align-items: center;

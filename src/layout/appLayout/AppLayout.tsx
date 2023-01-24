@@ -10,7 +10,7 @@ interface ILayoutProps {
     children: ReactNode
 }
 
-export const Layout: FC<ILayoutProps> = ({ children }) => {
+export const AppLayout: FC<ILayoutProps> = ({ children }) => {
     const { pathname } = useLocation()
 
     useEffect(() => {
@@ -28,5 +28,5 @@ export const Layout: FC<ILayoutProps> = ({ children }) => {
                 </div>
             <RightSidebar />
         </div>
-  )
+    )
 }

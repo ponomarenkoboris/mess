@@ -15,7 +15,7 @@ export const RightSidebar: FC = () => {
 
 
     return (
-        <div className={`right-sidebar`}>
+        <div className={`right-sidebar ${isSidebar ? '' : 'small'}`}>
             <img src={placeholderPhoto} className="user-avatar" alt="User avatar" />
             <div className={`sidebar__menu `}>
                 <div className="user-main-info">
@@ -45,6 +45,7 @@ export const RightSidebar: FC = () => {
                         <button 
                             className='interaction__toggle-btn'
                             onClick={() => setInteractionMenu(!isInteractionMenu)}
+                            onBlur={() => setInteractionMenu(false)}
                         >
                                 <img src={rectangle} alt="Toggle interaction menu" />
                         </button>

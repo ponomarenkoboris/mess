@@ -1,9 +1,14 @@
 $ligh-gray-color: #5F6164;
 
+.small {
+    width: 50px;
+}
+
 .right-sidebar {
     position: relative;
     width: 201px;
     background-color: #e2e2e2;
+    transition: width 200ms linear;
 
     .user-avatar {
         margin-bottom: 20px;

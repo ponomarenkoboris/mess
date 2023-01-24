@@ -1,5 +1,5 @@
 import { FC, ChangeEvent, useContext, useRef } from 'react'
-import { ChatInputContext, ActionType } from '@context/ChatContext'
+import { ChatInputContext, ActionType, Message } from '@context/ChatContext'
 import clip from '@assets/chat_page/clip.svg'
 
 export const Document: FC = () => {
@@ -8,7 +8,8 @@ export const Document: FC = () => {
     const uploadDocsHandler = (event: ChangeEvent<HTMLInputElement>): void => {
         if (!event.target.files) return
         const file = event.target.files.item(0)!
-        dispatch({ type: ActionType.DOCUMENT, payload: file })
+        const payload: Message = { type: 'file', value: file }
+        dispatch({ type: ActionType.DOCUMENT, payload })
         event.target.value = ''
     }
 

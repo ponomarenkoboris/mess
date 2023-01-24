@@ -1,5 +1,5 @@
 import type { KeyboardEvent, RefObject, Dispatch } from 'react'
-import { ActionType, MessageType } from '@context/ChatContext'
+import { ActionType, Message } from '@context/ChatContext'
 import type { ActionCreator } from '@context/ChatContext'
 import request, { Endpoints } from '@utils/axios.utils'
 
@@ -8,7 +8,7 @@ enum HotKeys {
     CTRL = 'Control'
 }
 
-const keyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>, textareaRef: RefObject<HTMLTextAreaElement>): void => {
+const keyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>, textareaRef: RefObject<HTMLTextAreaElement>, setMessageState: Dispatch<ActionCreator>): void => {
     if (!textareaRef.current?.value) {
         if (event.key === HotKeys.ENTER) event.preventDefault()
         return
@@ -23,15 +23,15 @@ const keyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>, textareaRef: 
 
     if (event.key === HotKeys.ENTER && !event.ctrlKey) {
         event.preventDefault()
-        const message = textareaRef.current.value
-        console.log(message)
+        const payload: Message = {type: 'text', value: textareaRef.current.value}
+        setMessageState({ type: ActionType.TEXT, payload })
         textareaRef.current.value = ''
         return
     }
 }
 
 
-type SendFunctProps = [MessageType, Dispatch<ActionCreator>]
+type SendFunctProps = [Message['value'], Dispatch<ActionCreator>]
 
 const sendFile = (value: SendFunctProps) => {
     const [file, dispatch] = value
@@ -57,8 +57,13 @@ const sendText = (value: SendFunctProps) => {
     dispatch({ type: ActionType.RESET })
 }
 
+const sendAudio = (value: SendFunctProps) => {
+    console.log('audio', value)
+}
+
 export {
     keyDownHandler,
     sendFile,
-    sendText
+    sendText,
+    sendAudio
 }

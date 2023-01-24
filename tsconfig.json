@@ -16,7 +16,10 @@
         "paths": {
             "@assets/*": ["assets/*"],
             "@utils/*": ["src/utils/*"],
-            "@context/*": ["src/context/*"]
+            "@context/*": ["src/context/*"],
+            "@components/*": ["src/components/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@layout/*": ["src/layout/*"]
         }
     },
     "include": ["src/**/*", "types.d.ts"],

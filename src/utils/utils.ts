@@ -1,5 +1,5 @@
 const changeHTMLTitle = (title: string): void => {
-    document.title = `Project | ${title}`
+    document.title = `Mess | ${title}`
 }
 
 export {
