@@ -4,6 +4,12 @@
     justify-content: flex-end;
     height: calc(100% - 81px);
 
+    .chat__messages {
+        height: 100%;
+        overflow-y: scroll;
+        // TODO customize scrollbar
+    }
+
     .chat__user-input {
         border-top: 2px solid rgba(0, 0, 0, 0.24);
         height: 80px;
@@ -69,10 +75,6 @@
             align-items: center;
             justify-content: space-between;
 
-            .audio-wrapper {
-                // TODO append styles for audio player
-            }
-
             .file-wrapper, .send-remove-buttons {
                 display: flex;
                 align-items: center;
@@ -80,10 +82,6 @@
                 img {
                     margin-right: 4px;
                 }
-            }
-
-            .send-remove-buttons button {
-                margin: 0;
             }
         }
 

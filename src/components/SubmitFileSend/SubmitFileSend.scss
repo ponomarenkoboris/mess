@@ -1,0 +1,12 @@
+.send-remove-buttons {
+    margin-left: 10px;
+    
+    .remove-file-button, 
+    .send-file-button {
+        padding: 4px !important;
+    
+        img {
+            margin: 0 !important;
+        }
+    }
+}
