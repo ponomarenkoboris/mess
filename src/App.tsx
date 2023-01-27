@@ -3,8 +3,7 @@ import { RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-rou
 import { ChatContextProvider } from '@context/ChatContext';
 import { AppLayout, RegistartionLayout } from '@layout/index';
 import { Chat } from './pages/chat/Chat';
-import { SignIn } from './pages/signin/SignIn';
-import { SignUp } from './pages/signup/SignUp';
+import { SignIn, SignUp } from './pages/auth';
 
 export const App: FC = () => {
     const router = createBrowserRouter([

@@ -1,5 +1,5 @@
 import { FC, FormEvent } from 'react';
-import './SignIn.scss';
+import '../index.scss';
 
 export const SignIn: FC = () => {
     const submitHandler = (event: FormEvent) => {

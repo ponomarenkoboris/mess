@@ -1,12 +1,12 @@
 import { FC, useRef, useReducer } from 'react';
-import { timeUpdateHandler } from './audioPlayer.utils';
-import { reducer, initialState, AudioPlayerActionTypes } from './reducer'
+import { timeUpdateHandler, audioRewind } from './audioPlayer.utils';
+import { reducer, initialState, AudioPlayerActionTypes } from './reducer';
 import play from '@assets/chat_page/play-button.svg';
 import pause from '@assets/chat_page/pause-button.svg';
 import './AudioPlayer.scss';
 
 interface AudioPlayerProps {
-    src: string
+    src: string;
 }
 
 export const AudioPlayer: FC<AudioPlayerProps> = ({ src }) => {
@@ -28,17 +28,20 @@ export const AudioPlayer: FC<AudioPlayerProps> = ({ src }) => {
             <audio ref={audioRef} src={src} onTimeUpdate={(e) => timeUpdateHandler(e, dispatch)}>
                 <track kind='captions' />
             </audio>
-            <div className="audio__player">
+            <div className='audio__player'>
                 <button className='player__controller' onClick={contorllerHandler}>
-                    {!isPlaying
-                    ? <img src={play} alt="Play voice message" />
-                    : <img src={pause} alt="Pause voice message" />
-                    }
+                    {!isPlaying ? (
+                        <img src={play} alt='Play voice message' />
+                    ) : (
+                        <img src={pause} alt='Pause voice message' />
+                    )}
                 </button>
                 <div className='player__progress'>
-                    <div style={{ width: `${progress}%` }} className='progress'></div>
+                    <div style={{ width: `${progress}%` }} className='progress'>
+                        <button className='progress__controller' {...audioRewind()}></button>
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

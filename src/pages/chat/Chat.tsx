@@ -20,7 +20,11 @@ export const Chat: FC = () => {
     return (
         <div className='chat'>
             <div className='chat__messages'>
-                {Array(100).fill(1).map((_, idx) => <p key={idx}>message</p>)}
+                {Array(100)
+                    .fill(1)
+                    .map((_, idx) => (
+                        <p key={idx}>message</p>
+                    ))}
             </div>
             <div className='chat__user-input'>
                 <Document />
@@ -40,7 +44,9 @@ export const Chat: FC = () => {
                                 <p>{(messageState.value as File).name}</p>
                             </div>
                         )}
-                        {messageState.type === 'audio' && <AudioPlayer src={messageState.value as string} />}
+                        {messageState.type === 'audio' && (
+                            <AudioPlayer src={messageState.value as string} />
+                        )}
                         <SubmitFileSend
                             onRemove={() => dispatch({ type: ActionType.RESET })}
                             onSend={submitSend}

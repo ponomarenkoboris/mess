@@ -13,7 +13,7 @@ export const RegistartionLayout: FC<RegistartionLayoutProps> = ({ children }) =>
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (pathname === '/') navigate('/sign-in')
+        if (pathname === '/') navigate('/sign-in');
         changeHTMLTitle(pathname === '/sign-in' ? 'Sign In' : 'Sign Up');
     }, [pathname, navigate]);
 
