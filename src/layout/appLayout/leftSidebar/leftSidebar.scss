@@ -10,6 +10,23 @@ $chat-bar-width: 258px;
         background-color: #000000;
         opacity: .7;
         mix-blend-mode: normal;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .group-bar__create-group {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            height: 41.5px;
+            width: 41.5px;
+            border-radius: 50%;
+            background-color: rgba($color: #ffffff, $alpha: .1);
+            box-shadow: -2px 0px 16px rgba(0, 0, 0, 0.16);
+        }
     }
 
     .left-sidebar__chats-bar {

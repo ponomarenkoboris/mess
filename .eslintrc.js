@@ -27,5 +27,6 @@ module.exports = {
         'react/react-in-jsx-scope': 0,
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'import/no-unresolved': 0,
+        'react-hooks/exhaustive-deps': 0
     },
 }

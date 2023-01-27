@@ -37,10 +37,7 @@ const reducer = (state: VoiceState, { type, payload }: VoiceReducer): VoiceState
         case VoiceReducerActionType.SET_IS_RECORDING:
             return {
                 ...state,
-                isRecording: payload as Exclude<
-                    VoiceReducerActionPayload,
-                    Blob | null | MediaRecorder
-                >,
+                isRecording: payload as Exclude<VoiceReducerActionPayload, Blob | null | MediaRecorder>,
             };
         default:
             return state;

@@ -44,13 +44,8 @@ export const Chat: FC = () => {
                                 <p>{(messageState.value as File).name}</p>
                             </div>
                         )}
-                        {messageState.type === 'audio' && (
-                            <AudioPlayer src={messageState.value as string} />
-                        )}
-                        <SubmitFileSend
-                            onRemove={() => dispatch({ type: ActionType.RESET })}
-                            onSend={submitSend}
-                        />
+                        {messageState.type === 'audio' && <AudioPlayer src={messageState.value as string} />}
+                        <SubmitFileSend onRemove={() => dispatch({ type: ActionType.RESET })} onSend={submitSend} />
                     </div>
                 )}
                 <button className='user-input_smiles'>

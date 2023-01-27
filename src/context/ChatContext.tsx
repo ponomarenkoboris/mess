@@ -48,9 +48,7 @@ type ChatContextProviderProps = { children: ReactNode };
 const ChatContextProvider: FC<ChatContextProviderProps> = ({ children }) => {
     const [value, dispatch] = useReducer(reducer, defaultState);
 
-    return (
-        <ChatInputContext.Provider value={[value, dispatch]}>{children}</ChatInputContext.Provider>
-    );
+    return <ChatInputContext.Provider value={[value, dispatch]}>{children}</ChatInputContext.Provider>;
 };
 
 export { ChatContextProvider, ActionType, ChatInputContext, defaultState };

@@ -17,12 +17,7 @@ export const Document: FC = () => {
 
     return (
         <button className={'user-input_docs'} onClick={() => fileInputRef.current?.click()}>
-            <input
-                type='file'
-                ref={fileInputRef}
-                accept='.doc,.docx,.txt'
-                onChange={uploadDocsHandler}
-            />
+            <input type='file' ref={fileInputRef} accept='.doc,.docx,.txt' onChange={uploadDocsHandler} />
             <img loading='lazy' src={clip} alt='Documents' />
         </button>
     );

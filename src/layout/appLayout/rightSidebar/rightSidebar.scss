@@ -2,6 +2,16 @@ $ligh-gray-color: #5F6164;
 
 .small {
     width: 50px;
+    background-color: #e2e2e2;
+    transition: width 200ms linear;
+    
+    .sidebar__menu {
+        display: none;
+    }
+
+    .user-avatar {
+        display: none;
+    }
 }
 
 .right-sidebar {
@@ -152,29 +162,28 @@ $ligh-gray-color: #5F6164;
  
         }
     }
+}
+.sidebar-open__button {
+    position: absolute;
+    bottom: 28px;
+    right: 7px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: initial;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: background-color 200ms linear;
 
-    .sidebar-open__button {
-        position: absolute;
-        bottom: 28px;
-        right: 23px;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: initial;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        transition: background-color 200ms linear;
+    &:hover {
+        background-color: rgb(212, 212, 212);
+    }
 
-        &:hover {
-            background-color: rgb(212, 212, 212);
-        }
-
-        &:active {
-            background-color: rgb(170, 169, 169);
-        }
+    &:active {
+        background-color: rgb(170, 169, 169);
     }
 }

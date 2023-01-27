@@ -13,7 +13,7 @@ export const RightSidebar: FC = () => {
     const [isSidebar, setIsSidebar] = useState<boolean>(true);
 
     return (
-        <div className={`right-sidebar ${isSidebar ? '' : 'small'}`}>
+        <div className={isSidebar ? 'right-sidebar' : 'small'}>
             <img src={placeholderPhoto} className='user-avatar' alt='User avatar' />
             <div className={`sidebar__menu `}>
                 <div className='user-main-info'>

@@ -7,10 +7,34 @@
     color: #ffffff;
     background-color: #093545;
     height: 100vh;
+    position: relative;
 
     .registration__page-bottom {
         width: 100%;
         position: fixed;
         bottom: 0;
+    }
+
+    .registration__navigation-button {
+        position: absolute;
+        left: 40px;
+        top: 40px;
+        width: 200px;
+
+        .navigation-button {
+            font-family: 'Montserrat', sans-serif;
+            background-color: inherit;
+            border: none;
+            outline: none;
+            color: #20DF7F;
+            cursor: pointer;
+            padding: 0;
+        }
+    }
+
+    @media (max-width: 415px) {
+        .registration__navigation-button {
+            left: calc(50% - 200px / 2);
+        }
     }
 }
