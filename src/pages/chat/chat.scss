@@ -15,6 +15,7 @@
         padding: 0 25px;
         display: flex;
         align-items: center;
+        position: relative;
 
         button {
             margin-right: 20px;
@@ -45,7 +46,7 @@
         .user-input_text, .user-input_uploaded-file {
             margin-right: 20px;
             border-radius: 10px;
-            height: 24px;
+            height: 38px;
             padding: 10px 10px 10px;
             width: 100%;
             background-color: rgb(212, 212, 212);

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from 'react';
+import { FC, ReactNode, useLayoutEffect } from 'react';
 import { Header } from './header/Header';
 import { RightSidebar } from './rightSidebar/RightSidebar';
 import { LeftSidebar } from './leftSidebar/LeftSidebar';
@@ -13,7 +13,7 @@ interface ILayoutProps {
 export const AppLayout: FC<ILayoutProps> = ({ children }) => {
     const { pathname } = useLocation();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let title: string = pathname.split('/')[1];
         title = title.charAt(0).toUpperCase() + title.substring(1);
         changeHTMLTitle(title);

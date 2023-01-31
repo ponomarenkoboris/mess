@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { debounceCreator } from '@utils/utils';
 import star from '@assets/header/combined_shape_364.svg';
 import search from '@assets/header/combined_shape_352.svg';
 import human from '@assets/header/combined_shape_363.svg';
@@ -7,8 +8,14 @@ import bell from '@assets/header/combined_shape_366.svg';
 import more from '@assets/header/more.svg';
 import './header.scss';
 
+const debounce = debounceCreator();
+
 export const Header: FC = () => {
     const { chatId } = useParams();
+
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value);
+    };
 
     return (
         <header>
@@ -23,7 +30,7 @@ export const Header: FC = () => {
                         <p>1,093</p>
                     </div>
                     <div className='chat-interactive-menu__search-input'>
-                        <input type='text' placeholder='Search...' />
+                        <input type='text' placeholder='Search...' onChange={(e) => debounce(() => changeHandler(e), 500)} />
                         <img src={search} alt='Search' />
                     </div>
                     <div className='chat-interactive-menu__notifications-button'>

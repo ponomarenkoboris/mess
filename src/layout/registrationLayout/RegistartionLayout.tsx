@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from 'react';
+import { FC, ReactNode, useLayoutEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { changeHTMLTitle } from '@utils/utils';
 import bottom from '@assets/registartion/bottom.svg';
@@ -14,7 +14,7 @@ export const RegistartionLayout: FC<RegistartionLayoutProps> = ({ children }) =>
 
     const clickHandler = () => (pathname === '/sign-in' ? navigate('/sign-up') : navigate('/sign-in'));
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (pathname === '/') navigate('/sign-in');
         changeHTMLTitle(pathname === '/sign-in' ? 'Sign In' : 'Sign Up');
     }, [pathname, navigate]);

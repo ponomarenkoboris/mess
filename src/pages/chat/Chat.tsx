@@ -1,7 +1,7 @@
-import { FC, useRef, useContext } from 'react';
+import { FC, useRef, useContext, useState } from 'react';
 import { ChatInputContext, ActionType } from '@context/ChatContext';
 import { keyDownHandler, sendText, sendFile, sendAudio } from './chat.utils';
-import { SubmitFileSend, Document, Voice, AudioPlayer } from '@components/index';
+import { SubmitFileSend, Document, Voice, AudioPlayer, EmojiSelector } from '@components/index';
 import file from '@assets/chat_page/file.svg';
 import smile from '@assets/chat_page/smile-svgrepo-com.svg';
 import './Chat.scss';
@@ -9,12 +9,18 @@ import './Chat.scss';
 export const Chat: FC = () => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [messageState, dispatch] = useContext(ChatInputContext);
+    const [isShowEmojiSelector, setIsShowEmojiSelector] = useState<boolean>(false);
 
     const submitSend = () => {
         const { type, value } = messageState;
         if (type === 'text') sendText([value, dispatch]);
         if (type === 'file') sendFile([value, dispatch]);
         if (type === 'audio') sendAudio([value, dispatch]);
+    };
+
+    const toogleEmojiSelector = () => setIsShowEmojiSelector(!isShowEmojiSelector);
+    const insertEmoji = (emoji: string) => {
+        if (textareaRef.current) textareaRef.current.value += emoji;
     };
 
     return (
@@ -48,9 +54,12 @@ export const Chat: FC = () => {
                         <SubmitFileSend onRemove={() => dispatch({ type: ActionType.RESET })} onSend={submitSend} />
                     </div>
                 )}
-                <button className='user-input_smiles'>
+                <button className='user-input_smiles' onClick={toogleEmojiSelector}>
                     <img loading='lazy' src={smile} alt='Smiles' />
                 </button>
+                {isShowEmojiSelector && (
+                    <EmojiSelector closeCallback={() => setIsShowEmojiSelector(!isShowEmojiSelector)} insertEmoji={insertEmoji} />
+                )}
             </div>
         </div>
     );

@@ -25,4 +25,13 @@ class RecordTimer implements IRecordTimer {
 
 const recordTimer = new RecordTimer();
 
-export { changeHTMLTitle, recordTimer };
+const debounceCreator = () => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    return (callback: () => void, ms: number) => {
+        clearInterval(timer);
+        timer = setTimeout(callback, ms);
+    };
+};
+
+export { changeHTMLTitle, recordTimer, debounceCreator };

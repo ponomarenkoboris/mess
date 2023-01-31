@@ -1,4 +1,4 @@
-import { FC, useRef, useReducer, useEffect } from 'react';
+import { FC, useRef, useReducer, useLayoutEffect } from 'react';
 import { timeUpdateHandler, audioRewind } from './audioPlayer.utils';
 import { reducer, initialState, AudioPlayerActionTypes } from './reducer';
 import play from '@assets/chat_page/play-button.svg';
@@ -24,7 +24,7 @@ export const AudioPlayer: FC<AudioPlayerProps> = ({ src }) => {
         }
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         return () => {
             cleanUp();
         };
