@@ -19,7 +19,8 @@
             "@context/*": ["src/context/*"],
             "@components/*": ["src/components/*"],
             "@hooks/*": ["src/hooks/*"],
-            "@layout/*": ["src/layout/*"]
+            "@layout/*": ["src/layout/*"],
+            "@mixin/*": ["src/mixin/*"]
         }
     },
     "include": ["src/**/*", "types.d.ts"],

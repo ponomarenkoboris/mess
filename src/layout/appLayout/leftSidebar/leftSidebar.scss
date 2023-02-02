@@ -1,9 +1,17 @@
+@import '@mixin/status.scss';
 $chat-bar-width: 258px;
+$gray-color: #919191;
+
+@mixin active-channel {
+    color: #ffffff;
+    background-color: rgba($color: #ffffff, $alpha: .2);
+}
 
 .left-sidebar {
     width: 329px;
     height: 100%;
     display: flex;
+    color: #ffffff;
 
     .left-sidebar__groups-bar {
         width: calc(329px - $chat-bar-width);
@@ -14,6 +22,12 @@ $chat-bar-width: 258px;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+
+        .group {
+            img {
+                cursor: pointer;
+            }
+        }
 
         .group-bar__create-group {
             cursor: pointer;
@@ -37,5 +51,72 @@ $chat-bar-width: 258px;
         width: $chat-bar-width;
         opacity: .75;
         mix-blend-mode: normal;
+        padding: 35.5px 26px;
+        overflow-y: auto;
+
+        .group-name {
+            display: flex;
+            justify-content: space-between;
+
+            .settings-link {
+                display: block;
+            }
+
+            p {
+                font-weight: 700;
+                font-size: 20px;
+                margin: 0 0 30px;
+            }
+
+            img {
+                width: 16px;
+            }
+        }
+
+        .group-channels {
+            color: $gray-color;
+
+            .channel-name {
+                display: block;
+                color: $gray-color;
+                text-decoration: none;
+                padding: 4px 13px 9px;
+                border-radius: 5px;
+                margin-bottom: 5px;
+                &:hover {
+                    @include active-channel;
+                }
+            }
+
+            .active-channel {
+                @include active-channel;
+            }
+        }
+
+        .group-freinds {
+            .block-title {
+                display: flex;
+                justify-content: space-between;
+                color: $gray-color;
+                font-weight: 700;
+                font-size: 12px;
+            }
+
+            .friends-list {
+                .friend {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+
+                    img {
+                        margin: 0 10px;
+                    }
+
+                    .active-status {
+                        @include user-status;
+                    }
+                }
+            }
+        }
     }
 }

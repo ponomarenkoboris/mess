@@ -12,7 +12,8 @@ module.exports = {
             "@context": path.resolve(__dirname, '..', 'src/context'),
             "@components": path.resolve(__dirname, '..', 'src/components'),
             "@hooks": path.resolve(__dirname, '..', 'src/hooks'),
-            "@layout": path.resolve(__dirname, '..', 'src/layout')
+            "@layout": path.resolve(__dirname, '..', 'src/layout'),
+            "@mixin": path.resolve(__dirname, '..', 'src/mixin')
         },
         extensions: ['.tsx', '.ts', '.js'],
     },

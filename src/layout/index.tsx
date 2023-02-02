@@ -1,2 +1,2 @@
 export * from './appLayout/AppLayout';
-export * from './registrationLayout/RegistartionLayout';
+export * from './greenLayout/GreenLayout';

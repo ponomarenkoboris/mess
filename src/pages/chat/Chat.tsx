@@ -24,7 +24,7 @@ export const Chat: FC = () => {
     };
 
     return (
-        <div className='chat'>
+        <main className='chat'>
             <div className='chat__messages'>
                 {Array(100)
                     .fill(1)
@@ -61,6 +61,6 @@ export const Chat: FC = () => {
                     <EmojiSelector closeCallback={() => setIsShowEmojiSelector(!isShowEmojiSelector)} insertEmoji={insertEmoji} />
                 )}
             </div>
-        </div>
+        </main>
     );
 };

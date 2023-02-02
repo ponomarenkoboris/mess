@@ -7,7 +7,7 @@ export const SignIn: FC = () => {
     };
 
     return (
-        <div className='sign-in'>
+        <main className='sign-in'>
             <h1>Sign in</h1>
             <p>Sign in and start using this app</p>
             <form className='sign-in__form' onSubmit={submitHandler}>
@@ -22,6 +22,6 @@ export const SignIn: FC = () => {
                 </div>
                 <button className='form__submit-btn'>Login</button>
             </form>
-        </div>
+        </main>
     );
 };

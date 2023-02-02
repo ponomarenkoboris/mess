@@ -6,7 +6,7 @@ import twitter from '@assets/social_midia/twitter.svg';
 import instagram from '@assets/social_midia/instagram.svg';
 import arrow from '@assets/right_sidebar/arrow.svg';
 import rectangle from '@assets/right_sidebar/rectangle.svg';
-import './rightSidebar.scss';
+import './RightSidebar.scss';
 
 export const RightSidebar: FC = () => {
     const [isInteractionMenu, setInteractionMenu] = useState<boolean>(false);

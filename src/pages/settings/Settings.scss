@@ -1,0 +1,19 @@
+.settings__page {
+    .public__info {
+        .user-main-info {
+            display: flex;
+
+        }
+
+
+        p {
+            cursor: pointer;
+            padding: 3px 5px;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: #224957;
+            }            
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { FC, useMemo, useState, MouseEvent } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import './EmojiSelector.scss';
 import emojies from './emoji.json';
 
@@ -7,20 +7,19 @@ interface EmojiSelectorProps {
     insertEmoji: (code: string) => void;
 }
 
-// TODO append styles for emoji modal
 export const EmojiSelector: FC<EmojiSelectorProps> = ({ closeCallback, insertEmoji }) => {
-    const emojiesList = useMemo(() => emojies, []);
-    const groups = Object.keys(emojiesList);
-
-    const [currentEmojies, setCurrentEmojies] = useState(emojiesList[groups[0] as keyof typeof emojiesList]);
+    const groups = Object.keys(emojies);
+    const [name, setName] = useState(groups[0])
+    const [currentEmojies, setCurrentEmojies] = useState(emojies[groups[0] as keyof typeof emojies]);
 
     const clickHandler = (event: MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
         const target = event.target as HTMLElement;
 
-        if (target.className === 'group__button') {
-            const name = target.dataset.group as keyof typeof emojiesList;
-            const list = emojiesList[name];
+        if (target.className.match('group__button')) {
+            const name = target.dataset.group as keyof typeof emojies;
+            const list = emojies[name];
+            setName(name);
             setCurrentEmojies(list);
             return;
         }
@@ -36,7 +35,7 @@ export const EmojiSelector: FC<EmojiSelectorProps> = ({ closeCallback, insertEmo
         <div className='smiles__list' onClick={clickHandler}>
             <div className='emoji__groups'>
                 {groups.map((groupName) => (
-                    <button className='group__button' key={groupName} data-group={groupName}>
+                    <button className={`group__button ${groupName === name ? 'active' : ''}`} key={groupName} data-group={groupName}>
                         {groupName}
                     </button>
                 ))}

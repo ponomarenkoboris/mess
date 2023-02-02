@@ -1,3 +1,4 @@
+@import '@mixin/status.scss';
 $ligh-gray-color: #5F6164;
 
 .small {
@@ -49,10 +50,7 @@ $ligh-gray-color: #5F6164;
             }
 
             &__status {
-                width: 8px;
-                height: 8px;
-                background-color: #70CC16;
-                border-radius: 50%;
+                @include user-status;
             }
         }
 

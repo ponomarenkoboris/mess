@@ -1,3 +1,8 @@
+@mixin active-button {
+    background-color: initial;
+    border-bottom: 1px solid #224957;
+}
+
 .smiles__list {
     position: absolute;
     top: -205px;
@@ -6,12 +11,15 @@
     width: 400px;
     overflow-x: hidden;
     overflow-y: auto;
+    direction: rtl;
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     
     .emoji__groups {
-        margin: 0 0 15px;
+        margin: 0;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
         
         .group__button {
             border-radius: 0px !important;
@@ -19,12 +27,15 @@
             white-space: nowrap;
             border-bottom: 1px solid #fff;
             padding: 0 5px;
-            margin: 0 2px;
+            margin: 5px 2px;
 
             &:hover {
-                background-color: initial;
-                border-bottom: 1px solid #224957;
+                @include active-button;
             }
+        }
+
+        .active {
+            @include active-button;
         }
     }
 

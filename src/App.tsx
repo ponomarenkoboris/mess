@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { ChatContextProvider } from '@context/ChatContext';
-import { AppLayout, RegistartionLayout } from '@layout/index';
+import { AppLayout, GreenLayout } from '@layout/index';
 import { Chat } from './pages/chat/Chat';
 import { SignIn, SignUp } from './pages/auth';
+import { Settings } from './pages/settings/Settings';
 
 export const App: FC = () => {
     const router = createBrowserRouter([
@@ -28,9 +29,9 @@ export const App: FC = () => {
         {
             path: '/',
             element: (
-                <RegistartionLayout>
+                <GreenLayout>
                     <Outlet />
-                </RegistartionLayout>
+                </GreenLayout>
             ),
             children: [
                 {
@@ -40,6 +41,10 @@ export const App: FC = () => {
                 {
                     path: '/sign-up',
                     element: <SignUp />,
+                },
+                {
+                    path: '/settings',
+                    element: <Settings />,
                 },
             ],
         },

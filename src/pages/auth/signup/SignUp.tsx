@@ -7,7 +7,7 @@ export const SignUp: FC = () => {
     };
 
     return (
-        <div className='sign-up'>
+        <main className='sign-up'>
             <h1>Sign up</h1>
             <form className='sign-up__form' onSubmit={submitHandler}>
                 <label htmlFor='name'>
@@ -32,6 +32,6 @@ export const SignUp: FC = () => {
                 </label>
                 <button className='form__submit-btn'>Register</button>
             </form>
-        </div>
+        </main>
     );
 };
