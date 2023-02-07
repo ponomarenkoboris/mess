@@ -20,7 +20,8 @@
             "@components/*": ["src/components/*"],
             "@hooks/*": ["src/hooks/*"],
             "@layout/*": ["src/layout/*"],
-            "@mixin/*": ["src/mixin/*"]
+            "@mixin/*": ["src/mixin/*"],
+            "@store/*": ["src/store/*"]
         }
     },
     "include": ["src/**/*", "types.d.ts"],

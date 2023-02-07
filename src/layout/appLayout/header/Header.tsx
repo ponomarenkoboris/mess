@@ -14,7 +14,8 @@ export const Header: FC = () => {
     const { chatId } = useParams();
 
     const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value);
+        if (!e.target.value) return;
+
     };
 
     return (
@@ -30,8 +31,10 @@ export const Header: FC = () => {
                         <p>1,093</p>
                     </div>
                     <div className='chat-interactive-menu__search-input'>
-                        <input type='text' placeholder='Search...' onChange={(e) => debounce(() => changeHandler(e), 500)} />
-                        <img src={search} alt='Search' />
+                        <input type='text' id='search__input' placeholder='Search...' onChange={(e) => debounce(() => changeHandler(e), 500)} />
+                        <label htmlFor="search__input">
+                            <img src={search} alt='Search' />
+                        </label>
                     </div>
                     <div className='chat-interactive-menu__notifications-button'>
                         <img src={bell} alt='Notifications' />

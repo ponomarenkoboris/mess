@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent } from 'react';
+import { FC, useState, MouseEvent, useEffect } from 'react';
 import './EmojiSelector.scss';
 import emojies from './emoji.json';
 
@@ -7,10 +7,19 @@ interface EmojiSelectorProps {
     insertEmoji: (code: string) => void;
 }
 
+const listenerCreator = (closeCallback: EmojiSelectorProps['closeCallback']): ((event: globalThis.MouseEvent) => void) => {
+    return (event: globalThis.MouseEvent) => {
+        const element = event.target as HTMLElement;
+        const isOpenButton = element.classList.contains('user-input_smiles-picture') || element.classList.contains('user-input_smiles');
+        if (!element.classList.contains('smiles__list') && !isOpenButton) closeCallback();
+    };
+};
+
 export const EmojiSelector: FC<EmojiSelectorProps> = ({ closeCallback, insertEmoji }) => {
     const groups = Object.keys(emojies);
-    const [name, setName] = useState(groups[0])
+    const [name, setName] = useState(groups[0]);
     const [currentEmojies, setCurrentEmojies] = useState(emojies[groups[0] as keyof typeof emojies]);
+    const listener = listenerCreator(closeCallback);
 
     const clickHandler = (event: MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
@@ -30,6 +39,11 @@ export const EmojiSelector: FC<EmojiSelectorProps> = ({ closeCallback, insertEmo
             closeCallback();
         }
     };
+
+    useEffect(() => {
+        document.addEventListener('click', listener);
+        return () => document.removeEventListener('click', listener);
+    }, []);
 
     return (
         <div className='smiles__list' onClick={clickHandler}>

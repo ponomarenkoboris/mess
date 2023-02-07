@@ -13,7 +13,8 @@ module.exports = {
             "@components": path.resolve(__dirname, '..', 'src/components'),
             "@hooks": path.resolve(__dirname, '..', 'src/hooks'),
             "@layout": path.resolve(__dirname, '..', 'src/layout'),
-            "@mixin": path.resolve(__dirname, '..', 'src/mixin')
+            "@mixin": path.resolve(__dirname, '..', 'src/mixin'),
+            "@store": path.resolve(__dirname, '..', 'src/store')
         },
         extensions: ['.tsx', '.ts', '.js'],
     },

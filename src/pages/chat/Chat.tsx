@@ -55,7 +55,7 @@ export const Chat: FC = () => {
                     </div>
                 )}
                 <button className='user-input_smiles' onClick={toogleEmojiSelector}>
-                    <img loading='lazy' src={smile} alt='Smiles' />
+                    <img className='user-input_smiles-picture' loading='lazy' src={smile} alt='Smiles' />
                 </button>
                 {isShowEmojiSelector && (
                     <EmojiSelector closeCallback={() => setIsShowEmojiSelector(!isShowEmojiSelector)} insertEmoji={insertEmoji} />

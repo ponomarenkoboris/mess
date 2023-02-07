@@ -1,6 +1,6 @@
 {
     "name": "mess",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.tsx",
     "author": "Boris Ponomarenko <borisponomarenko.dmi@gmail.com>",
     "license": "MIT",
@@ -16,12 +16,16 @@
         "axios": "^1.2.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-redux": "^8.0.5",
         "react-router-dom": "^6.6.2"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn format"
+            "pre-commit": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --config ./.prettierrc"
         }
+    },
+    "lint-staged": {
+        "./src/**/*.{js,jsx,ts,tsx}": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --config ./.prettierrc"
     },
     "devDependencies": {
         "@babel/core": "^7.20.12",
@@ -48,6 +52,7 @@
         "eslint-watch": "^8.0.0",
         "html-webpack-plugin": "^5.5.0",
         "husky": "^8.0.3",
+        "lint-staged": "^13.1.0",
         "mini-css-extract-plugin": "^2.7.2",
         "node-sass": "^8.0.0",
         "postcss": "^8.4.21",

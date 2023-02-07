@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import placeholderPhoto from '@assets/users/lady.png';
+import { useAppSelector } from '@hooks/storeHooks/storeHooks';
 import linkedIn from '@assets/social_midia/linked_in.svg';
 import facebook from '@assets/social_midia/facebook.svg';
 import twitter from '@assets/social_midia/twitter.svg';
@@ -11,17 +11,18 @@ import './RightSidebar.scss';
 export const RightSidebar: FC = () => {
     const [isInteractionMenu, setInteractionMenu] = useState<boolean>(false);
     const [isSidebar, setIsSidebar] = useState<boolean>(true);
+    const user = useAppSelector((state) => state.user);
 
     return (
         <div className={isSidebar ? 'right-sidebar' : 'small'}>
-            <img src={placeholderPhoto} className='user-avatar' alt='User avatar' />
+            <img src={user.imageSrc} className='user-avatar' alt='User avatar' />
             <div className={`sidebar__menu `}>
                 <div className='user-main-info'>
                     <div className='user-main-info__name'>
-                        <p>Amilia Luna</p>
+                        <p>{user.name}</p>
                         <div className='user-main-info__status'></div>
                     </div>
-                    <p className='user-main-info__position'>UI Designer</p>
+                    <p className='user-main-info__position'>{user.position}</p>
                 </div>
                 <div className='user-social-links'>
                     <div className='user-social-link__wrapper'>
@@ -59,19 +60,19 @@ export const RightSidebar: FC = () => {
                 <div className='user-info'>
                     <div className='user-info__username'>
                         <p className='username__type'>Username</p>
-                        <p className='username'>@amilia_lu</p>
+                        <p className='username'>{user.username}</p>
                     </div>
                     <div className='user-info__email'>
                         <p className='email__type'>Email</p>
-                        <p className='email'>a-luna@gmail.com</p>
+                        <p className='email'>{user.email}</p>
                     </div>
                     <div className='user-info__skype'>
                         <p className='skype__type'>Skype</p>
-                        <p className='skype'>amiluna</p>
+                        <p className='skype'>{user.skype}</p>
                     </div>
                     <div className='user-info__timezone'>
                         <p className='timezone__type'>Timezone</p>
-                        <p className='timezone'>2:21 PM Local time</p>
+                        <p className='timezone'>{user.timezone}</p>
                     </div>
                 </div>
             </div>
