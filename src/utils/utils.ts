@@ -34,4 +34,16 @@ const debounceCreator = () => {
     };
 };
 
-export { changeHTMLTitle, recordTimer, debounceCreator };
+const objectsAreEqual = (...args: Array<object>): boolean => {
+    const objAsString = args.map((obj) => JSON.stringify(obj));
+
+    for (let i = 0; i < objAsString.length; i++) {
+        for (let j = i + 1; j < objAsString.length; j++) {
+            if (objAsString[i] !== objAsString[j]) return false;
+        }
+    }
+
+    return true;
+};
+
+export { changeHTMLTitle, recordTimer, debounceCreator, objectsAreEqual };

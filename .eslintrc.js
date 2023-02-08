@@ -29,6 +29,8 @@ module.exports = {
         'import/no-unresolved': 0,
         'react-hooks/exhaustive-deps': 0,
         'jsx-a11y/no-static-element-interactions': 0,
-        'jsx-a11y/click-events-have-key-events': 0
+        'jsx-a11y/click-events-have-key-events': 0,
+        'jsx-a11y/no-noninteractive-element-to-interactive-role': 1,
+        'jsx-a11y/no-autofocus': 1
     },
 }

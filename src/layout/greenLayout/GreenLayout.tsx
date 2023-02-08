@@ -11,6 +11,7 @@ interface RegistartionLayoutProps {
 export const GreenLayout: FC<RegistartionLayoutProps> = ({ children }) => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
+    const isAuth = true;
 
     const clickHandler = () => {
         pathname === '/sign-in' ? navigate('/sign-up') : pathname === '/settings' ? navigate(-1) : navigate('/sign-in');
@@ -18,6 +19,7 @@ export const GreenLayout: FC<RegistartionLayoutProps> = ({ children }) => {
 
     useLayoutEffect(() => {
         if (pathname === '/') navigate('/sign-in');
+        if (pathname === '/settings' && !isAuth) navigate('/sign-in');
         changeHTMLTitle(pathname === '/sign-in' ? 'Sign In' : pathname === '/settings' ? 'Settings' : 'Sign Up');
     }, [pathname, navigate]);
 

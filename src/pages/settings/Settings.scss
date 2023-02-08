@@ -1,19 +1,90 @@
+@import '@mixin/submitButton.mixin.scss';
+
 .settings__page {
+    width: 50%;
+
     .public__info {
+
         .user-main-info {
+            width: 100%;
             display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
 
+            img {
+                cursor: pointer;
+            }
+
+            .info {
+
+                .name-info,
+                .email-info,
+                .username-info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin-bottom: 16px;
+                    padding: 0 5px;
+
+                    &:hover {
+                        background-color: #224957;
+
+                        .writeble-element-indicator {
+                            visibility: visible;
+                        }
+                    }
+
+                    &:focus-within {
+                        cursor: text;
+                        background-color: #224957;
+
+                        .writeble-element-indicator {
+                            visibility: hidden;
+                        }
+
+                        input {
+                            cursor: initial;
+                        }
+                    }
+
+                    .writeble-element-indicator {
+                        visibility: hidden;
+
+                        &::before {
+                            content: '✐';
+                            margin-left: 5px;
+                        }
+                    }
+
+                    input {
+                        display: flex;
+                        padding: 3px 5px;
+                        border: none;
+                        outline: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-family: 'Lexend Deca', sans-serif;
+                        background-color: inherit;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            
         }
+        .submit-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
 
-
-        p {
-            cursor: pointer;
-            padding: 3px 5px;
-            border-radius: 5px;
-
-            &:hover {
-                background-color: #224957;
-            }            
+            .submit-changes {
+                max-width: 400px;
+                @include submit-button;
+            }
         }
     }
 }

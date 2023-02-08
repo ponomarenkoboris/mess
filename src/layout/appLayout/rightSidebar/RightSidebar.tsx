@@ -60,7 +60,7 @@ export const RightSidebar: FC = () => {
                 <div className='user-info'>
                     <div className='user-info__username'>
                         <p className='username__type'>Username</p>
-                        <p className='username'>{user.username}</p>
+                        <p className='username'>@{user.username}</p>
                     </div>
                     <div className='user-info__email'>
                         <p className='email__type'>Email</p>

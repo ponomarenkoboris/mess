@@ -15,7 +15,6 @@ export const Header: FC = () => {
 
     const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.value) return;
-
     };
 
     return (
@@ -32,7 +31,7 @@ export const Header: FC = () => {
                     </div>
                     <div className='chat-interactive-menu__search-input'>
                         <input type='text' id='search__input' placeholder='Search...' onChange={(e) => debounce(() => changeHandler(e), 500)} />
-                        <label htmlFor="search__input">
+                        <label htmlFor='search__input'>
                             <img src={search} alt='Search' />
                         </label>
                     </div>

@@ -8,7 +8,7 @@ const initialState: IUser = {
     name: 'Amilia Luna',
     position: 'UI Designer',
     imageSrc: placeholderPhoto,
-    username: '@amilia_lu',
+    username: 'amilia_lu',
     email: 'a-luna@gmail.com',
     skype: 'amiluna',
     timezone: '2:21 PM Local time',
