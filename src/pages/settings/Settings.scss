@@ -1,32 +1,82 @@
 @import '@mixin/submitButton.mixin.scss';
+@import '@mixin/headerText.mixin.scss';
+
+@mixin text-input {
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Lexend Deca', sans-serif;
+    color: #fff;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    padding: 3px 5px;
+}
+
+@mixin article-wrapper {
+    padding: 20px 20px;
+    border: 1px solid #224957;
+    background-color: #18333d;
+    box-shadow: 0 0 2px 4px rgba($color: #000000, $alpha: .1);
+    border-radius: 10px;
+}
 
 .settings__page {
-    width: 50%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        @include header-text;
+    }
 
     .public__info {
+        width: 80%;
 
+        
         .user-main-info {
-            width: 100%;
+            @include article-wrapper;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 20px;
 
-            img {
-                cursor: pointer;
+            .photo__uploader {
+
+                input[type="file"] {
+                    display: none;
+                }
+                
+                img {
+                    height: 200px;
+                    cursor: pointer;
+                }
             }
 
-            .info {
 
-                .name-info,
-                .email-info,
-                .username-info {
+            .info {
+                .info__name, 
+                .info__email, 
+                .info__username {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    margin-bottom: 16px;
+
+                    p {
+                        margin: 0 10px 0 0;
+                    }
+                }
+
+                .name,
+                .email,
+                .username {
+                    width: 100%;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     border-radius: 5px;
                     cursor: pointer;
-                    margin-bottom: 16px;
                     padding: 0 5px;
 
                     &:hover {
@@ -60,15 +110,8 @@
                     }
 
                     input {
+                        @include text-input;
                         display: flex;
-                        padding: 3px 5px;
-                        border: none;
-                        outline: none;
-                        border-radius: 5px;
-                        font-size: 16px;
-                        font-family: 'Lexend Deca', sans-serif;
-                        background-color: inherit;
-                        color: #fff;
                         cursor: pointer;
                     }
                 }
@@ -76,12 +119,64 @@
 
             
         }
-        .submit-wrapper {
+        .submit-profile {
             width: 100%;
             display: flex;
             justify-content: center;
 
-            .submit-changes {
+            .submit-profile-changes {
+                max-width: 400px;
+                @include submit-button;
+            }
+        }
+    }
+
+    .password__info {
+        width: 80%;
+        position: relative;
+        z-index: 1;
+
+        .password__form {
+            @include article-wrapper;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            input, input::placeholder {
+                @include text-input;
+                width: 100%;
+            }
+
+            .password {
+                margin-bottom: 10px;
+            }
+            .password, .rePassword {
+                display: flex;
+                width: 70%;
+                background-color: #224957;
+                border-radius: 10px;
+                padding-right: 5px;
+            }
+
+            .visibility-contorller {
+                border: none;
+                outline: none;
+                background-color: inherit;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                padding: 0;
+                margin-right: 10px;
+            }
+        }
+
+        .submit-password {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .submit-password-changes {
                 max-width: 400px;
                 @include submit-button;
             }
