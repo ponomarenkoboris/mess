@@ -1,0 +1,10 @@
+@mixin text-input {
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Lexend Deca', sans-serif;
+    color: #fff;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    padding: 3px 5px;
+}

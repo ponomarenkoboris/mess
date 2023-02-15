@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { useAppSelector } from '@hooks/storeHooks/storeHooks';
+import type { SocialNetworks } from '@store/models/user.model';
 import linkedIn from '@assets/social_midia/linked_in.svg';
 import facebook from '@assets/social_midia/facebook.svg';
 import twitter from '@assets/social_midia/twitter.svg';
@@ -66,17 +67,19 @@ export const RightSidebar: FC = () => {
                         <p className='email__type'>Email</p>
                         <p className='email'>{user.email}</p>
                     </div>
-                    <div className='user-info__skype'>
-                        <p className='skype__type'>Skype</p>
-                        <p className='skype'>{user.skype}</p>
-                    </div>
+                    {Object.keys(user.socialNetworks).map((networkName) => (
+                        <div key={networkName} className='user-info__socials'>
+                            <p className='skype__type'>Skype</p>
+                            <p className='skype'>{user.socialNetworks[networkName as keyof SocialNetworks]}</p>
+                        </div>
+                    ))}
                     <div className='user-info__timezone'>
                         <p className='timezone__type'>Timezone</p>
                         <p className='timezone'>{user.timezone}</p>
                     </div>
                 </div>
             </div>
-            <button className='sidebar-open__button' onClick={() => setIsSidebar(!isSidebar)}>
+            <button className={`sidebar-open__button ${!isSidebar ? 'reverse' : ''}`} onClick={() => setIsSidebar(!isSidebar)}>
                 <img src={arrow} alt='Open/close info' />
             </button>
         </div>

@@ -1,16 +1,6 @@
 @import '@mixin/submitButton.mixin.scss';
 @import '@mixin/headerText.mixin.scss';
-
-@mixin text-input {
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: 'Lexend Deca', sans-serif;
-    color: #fff;
-    background-color: inherit;
-    border: none;
-    outline: none;
-    padding: 3px 5px;
-}
+@import '@mixin/settingsTextInput.mixin.scss';
 
 @mixin article-wrapper {
     padding: 20px 20px;
@@ -36,88 +26,58 @@
         
         .user-main-info {
             @include article-wrapper;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
             margin-bottom: 20px;
+            
+            .main-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
 
-            .photo__uploader {
+                .photo__uploader {
 
-                input[type="file"] {
-                    display: none;
-                }
-                
-                img {
-                    height: 200px;
-                    cursor: pointer;
-                }
-            }
-
-
-            .info {
-                .info__name, 
-                .info__email, 
-                .info__username {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    margin-bottom: 16px;
-
-                    p {
-                        margin: 0 10px 0 0;
+                    input[type="file"] {
+                        display: none;
                     }
-                }
-
-                .name,
-                .email,
-                .username {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    padding: 0 5px;
-
-                    &:hover {
-                        background-color: #224957;
-
-                        .writeble-element-indicator {
-                            visibility: visible;
-                        }
-                    }
-
-                    &:focus-within {
-                        cursor: text;
-                        background-color: #224957;
-
-                        .writeble-element-indicator {
-                            visibility: hidden;
-                        }
-
-                        input {
-                            cursor: initial;
-                        }
-                    }
-
-                    .writeble-element-indicator {
-                        visibility: hidden;
-
-                        &::before {
-                            content: '✐';
-                            margin-left: 5px;
-                        }
-                    }
-
-                    input {
-                        @include text-input;
-                        display: flex;
+                    
+                    img {
+                        height: 200px;
                         cursor: pointer;
                     }
                 }
+                .info {
+                    .info__name, 
+                    .info__email, 
+                    .info__username {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        margin-bottom: 16px;
+    
+                        p {
+                            margin: 0 10px 0 0;
+                        }
+                    }
+                }
             }
 
-            
+            .socials {
+                .social-networks {
+                    list-style: none;
+                    padding: 0;
+                    margin-left: 20px;
+                    width: 400px;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            margin: 0;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
         }
         .submit-profile {
             width: 100%;
@@ -179,6 +139,22 @@
             .submit-password-changes {
                 max-width: 400px;
                 @include submit-button;
+            }
+
+        }
+
+        .alert-message {
+            background-color: #f92424;
+            border-radius: 10px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+
+            p {
+                margin: 0;
             }
         }
     }

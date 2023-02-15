@@ -1,3 +1,9 @@
+export type SocialNetworks = {
+    skype?: string;
+    telegram?: string;
+    whatsapp?: string;
+};
+
 export interface IUser {
     id: number;
     name: string;
@@ -5,7 +11,7 @@ export interface IUser {
     imageSrc: string;
     username: string;
     email: string;
-    skype: string;
+    socialNetworks: SocialNetworks;
     timezone: string;
     friends?: Array<string>;
     channels?: Array<string>;

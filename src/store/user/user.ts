@@ -10,7 +10,9 @@ const initialState: IUser = {
     imageSrc: placeholderPhoto,
     username: 'amilia_lu',
     email: 'a-luna@gmail.com',
-    skype: 'amiluna',
+    socialNetworks: {
+        skype: 'amiluna',
+    },
     timezone: '2:21 PM Local time',
 };
 
@@ -22,4 +24,5 @@ const userSlice = createSlice({
     },
 });
 
+export const { updateUserData } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,0 +1,47 @@
+@import '@mixin/settingsTextInput.mixin.scss';
+
+label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 5px;
+
+    &:hover {
+        background-color: #224957;
+
+        .writeble-element-indicator {
+            visibility: visible;
+        }
+    }
+
+    &:focus-within {
+        cursor: text;
+        background-color: #224957;
+
+        .writeble-element-indicator {
+            visibility: hidden;
+        }
+
+        input {
+            cursor: initial;
+        }
+    }
+
+    .writeble-element-indicator {
+        visibility: hidden;
+
+        &::before {
+            content: '✐';
+            margin-left: 5px;
+        }
+    }
+
+    input {
+        @include text-input;
+        display: flex;
+        cursor: pointer;
+    }
+}

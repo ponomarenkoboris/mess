@@ -1,20 +1,25 @@
 import { FC, useState, useReducer, useEffect } from 'react';
-import { useAppSelector } from '@hooks/storeHooks/storeHooks';
+import { useAppSelector, useAppDispatch } from '@hooks/storeHooks/storeHooks';
 import { objectsAreEqual } from '@utils/utils';
 import { reducer, ActionType, updateProfilePhoto, callClickEvent, tooglePasswordVisibility } from './settings.utils';
-import closeEye from '@assets/registration/close_eye.svg'
+import { updateUserData } from '@store/user/user';
+import closeEye from '@assets/registration/close_eye.svg';
 import './Settings.scss';
-
+import { SocialNetworks } from '@store/models/user.model';
+import { SettingsInput } from '@components/SettingsInput/SettingsInput';
 
 export const Settings: FC = () => {
-    const { username, email, name, imageSrc } = useAppSelector((store) => store.user);
-    const initialState = { username, email, name, imageSrc };
-    const [pass, setPass] = useState({ password: '', rePassword: '' })
+    const userData = useAppSelector((store) => store.user);
+    const storeDispatch = useAppDispatch();
+    const initialState = userData;
+    const [pass, setPass] = useState({ password: '', rePassword: '' });
     const [user, dispatch] = useReducer(reducer, initialState);
     const [isProfileSubmitAvaliable, setIsProfileSubmitAvaliable] = useState<boolean>(false);
 
     const applayProfileChanges = () => {
-        // TODO applay user profile changes
+        storeDispatch(updateUserData(user));
+        setIsProfileSubmitAvaliable(false);
+        // TODO applay user profile changes to the server
     };
 
     const applayPasswordChanges = () => {
@@ -25,57 +30,67 @@ export const Settings: FC = () => {
         if (!objectsAreEqual(initialState, user)) setIsProfileSubmitAvaliable(true);
         else setIsProfileSubmitAvaliable(false);
     }, [user]);
- 
+
     return (
         <main className='settings__page'>
             <article className='public__info'>
                 <h1>Profile</h1>
                 <div className='user-main-info'>
-                    <div className="photo__uploader">
-                        <input type="file" accept='.jpg, .jpeg, .png' onChange={updateProfilePhoto(dispatch)} />
-                        <button className="photo__uploader" onClick={callClickEvent}>
-                            <img src={user.imageSrc} alt='Profile' />
-                        </button>
-                    </div>
-                    <div className='info'>
-                        <div className="info__name">
-                            <p>Name: </p>
-                            <label className='name'>
-                                <input
-                                    type='text'
+                    <div className='main-info'>
+                        <div className='photo__uploader'>
+                            <input type='file' accept='.jpg, .jpeg, .png' onChange={updateProfilePhoto(dispatch)} />
+                            <button className='photo__uploader' onClick={callClickEvent}>
+                                <img src={user.imageSrc} alt='Profile' />
+                            </button>
+                        </div>
+                        <div className='info'>
+                            <div className='info__name'>
+                                <p>Name: </p>
+                                <SettingsInput
+                                    labelClassName='name'
                                     onChange={(e) => dispatch({ type: ActionType.UPDATE_NAME, payload: e.target.value })}
                                     defaultValue={user.name}
                                 />
-                                <div className='writeble-element-indicator'></div>
-                            </label>
-                        </div>
-                        <div className="info__email">
-                            <p>Email: </p>
-                            <label className='email'>
-                                <input
-                                    type='text'
+                            </div>
+                            <div className='info__email'>
+                                <p>Email: </p>
+                                <SettingsInput
+                                    labelClassName='email'
                                     onChange={(e) => dispatch({ type: ActionType.UPDATE_EMAIL, payload: e.target.value })}
                                     defaultValue={user.email}
                                 />
-                                <div className='writeble-element-indicator'></div>
-                            </label>
-                        </div>
-                        <div className="info__username">
-                            <p>Username: </p>
-                            <label className='username'>
-                                <input
-                                    type='text'
+                            </div>
+                            <div className='info__username'>
+                                <p>Username: </p>
+                                <SettingsInput
+                                    labelClassName='username'
                                     onChange={(e) => dispatch({ type: ActionType.UPDATE_USERNAME, payload: e.target.value })}
                                     defaultValue={user.username}
                                 />
-                                <div className='writeble-element-indicator'></div>
-                            </label>
+                            </div>
                         </div>
+                    </div>
+                    <div className='socials'>
+                        <h2>Social networks</h2>
+                        <ul className='social-networks'>
+                            {Object.keys(user.socialNetworks).map((networkName) => (
+                                <li key={networkName}>
+                                    <p>{networkName}</p>
+                                    <SettingsInput
+                                        labelClassName={networkName}
+                                        onChange={(e) => {
+                                            console.log('hi', e);
+                                        }}
+                                        defaultValue={user.socialNetworks[networkName as keyof SocialNetworks] || ''}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
                 <div className='submit-profile'>
-                    <button 
-                        className='submit-profile-changes' 
+                    <button
+                        className='submit-profile-changes'
                         style={{ visibility: isProfileSubmitAvaliable ? 'visible' : 'hidden' }}
                         onClick={applayProfileChanges}
                     >
@@ -85,36 +100,43 @@ export const Settings: FC = () => {
             </article>
             <article className='password__info'>
                 <h1>Password</h1>
-                <div className="password__form">
-                    <div className="password">
-                        <input 
-                            type="password" 
-                            placeholder='Input new password' 
-                            onChange={(e) => setPass(prev => ({ ...prev, password: e.target.value }))} 
+                <div className='password__form'>
+                    <div className='password'>
+                        <input
+                            type='password'
+                            placeholder='Input new password'
+                            onChange={(e) => setPass((prev) => ({ ...prev, password: e.target.value }))}
                         />
-                        <button className="visibility-contorller" onClick={tooglePasswordVisibility}>
-                            <img src={closeEye} alt="See password" />
+                        <button className='visibility-contorller' onClick={tooglePasswordVisibility}>
+                            <img src={closeEye} alt='See password' />
                         </button>
                     </div>
-                    <div className="rePassword">
-                        <input 
-                            type="password" 
-                            placeholder='Confirm password' 
-                            onChange={(e) => setPass(perv => ({ ...perv, rePassword: e.target.value }))} 
+                    <div className='rePassword'>
+                        <input
+                            type='password'
+                            placeholder='Confirm password'
+                            onChange={(e) => setPass((perv) => ({ ...perv, rePassword: e.target.value }))}
                         />
-                        <button className="visibility-contorller" onClick={tooglePasswordVisibility}>
-                            <img src={closeEye} alt="See password" />
+                        <button className='visibility-contorller' onClick={tooglePasswordVisibility}>
+                            <img src={closeEye} alt='See password' />
                         </button>
                     </div>
                 </div>
-                <div className="submit-password">
-                    <button 
-                        className='submit-password-changes' 
-                        style={{ visibility: pass.password && pass.rePassword && pass.password === pass.rePassword ? 'visible' : 'hidden' }} 
-                        onClick={applayPasswordChanges}>
+                {pass.password === pass.rePassword ? (
+                    <div className='submit-password'>
+                        <button
+                            className='submit-password-changes'
+                            style={{ visibility: pass.password && pass.rePassword ? 'visible' : 'hidden' }}
+                            onClick={applayPasswordChanges}
+                        >
                             Confirm password
-                    </button>
-                </div>
+                        </button>
+                    </div>
+                ) : (
+                    <div className='alert-message'>
+                        <p>Passwords must match</p>
+                    </div>
+                )}
             </article>
         </main>
     );

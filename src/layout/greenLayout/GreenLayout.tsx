@@ -1,7 +1,7 @@
 import { FC, ReactNode, useLayoutEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { changeHTMLTitle } from '@utils/utils';
-import bottom from '@assets/registartion/bottom.svg';
+import bottom from '@assets/registration/bottom.svg';
 import './GreenLayout.scss';
 
 interface RegistartionLayoutProps {

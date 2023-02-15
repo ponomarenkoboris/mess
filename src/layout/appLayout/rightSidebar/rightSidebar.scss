@@ -137,7 +137,7 @@ $ligh-gray-color: #5F6164;
         .user-info {
             .user-info__username,
             .user-info__email,
-            .user-info__skype {
+            .user-info__socials {
                 margin-bottom: 11px;
             }
 
@@ -175,7 +175,7 @@ $ligh-gray-color: #5F6164;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    transition: background-color 200ms linear;
+    transition: 200ms linear;
 
     &:hover {
         background-color: rgb(212, 212, 212);
@@ -184,4 +184,8 @@ $ligh-gray-color: #5F6164;
     &:active {
         background-color: rgb(170, 169, 169);
     }
+}
+
+.reverse {
+    transform: rotate(180deg);
 }
