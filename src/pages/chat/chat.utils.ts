@@ -1,5 +1,6 @@
 import type { KeyboardEvent, RefObject, Dispatch } from 'react';
-import { ActionType, Message } from '@context/ChatContext';
+import { ActionType } from '@context/ChatContext';
+import { Content } from '@store/models/chat.model';
 import type { ActionCreator } from '@context/ChatContext';
 import request, { Endpoints } from '@utils/request.utils';
 
@@ -8,33 +9,33 @@ enum HotKeys {
     CTRL = 'Control',
 }
 
-const keyDownHandler = (
+const keyDownListener = (
     event: KeyboardEvent<HTMLTextAreaElement>,
     textareaRef: RefObject<HTMLTextAreaElement>,
-    setMessageState: Dispatch<ActionCreator>,
-): void => {
+): false | Content => {
     if (!textareaRef.current?.value) {
         if (event.key === HotKeys.ENTER) event.preventDefault();
-        return;
+        return false;
     }
 
     if (event.key === HotKeys.ENTER && event.ctrlKey) {
         event.preventDefault();
         textareaRef.current.value += '\n';
         textareaRef.current.scrollTop = textareaRef.current.scrollHeight;
-        return;
+        return false;
     }
 
     if (event.key === HotKeys.ENTER && !event.ctrlKey) {
         event.preventDefault();
-        const payload: Message = { type: 'text', value: textareaRef.current.value };
-        setMessageState({ type: ActionType.TEXT, payload });
+        const payload: Content = { type: 'text', value: textareaRef.current.value };
         textareaRef.current.value = '';
-        return;
+        return payload;
     }
+
+    return false
 };
 
-type SendFunctProps = [Message['value'], Dispatch<ActionCreator>];
+type SendFunctProps = [Content['value'], Dispatch<ActionCreator>];
 
 const sendFile = (value: SendFunctProps) => {
     const [file, dispatch] = value;
@@ -64,4 +65,4 @@ const sendAudio = (value: SendFunctProps) => {
     console.log('audio', value);
 };
 
-export { keyDownHandler, sendFile, sendText, sendAudio };
+export { keyDownListener, sendFile, sendText, sendAudio };

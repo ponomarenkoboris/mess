@@ -10,10 +10,10 @@ export const SignIn: FC = () => {
     const submitHandler = async (event: FormEvent) => {
         event.preventDefault();
         const { email, password } = event.target as HTMLFormElement;
+        navigate('/chat/general'); // TODO move to the try block
         try {
             const response = await loginUser({ email: email.value, password: password.value }).unwrap();
             console.log(response);
-            navigate('/chat/general');
         } catch {
             console.error('something went wrong');
         }

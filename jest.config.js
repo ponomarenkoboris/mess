@@ -4,7 +4,8 @@ module.exports = {
     setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
     testEnvironment: "jsdom",
     moduleNameMapper: {
-        "\.(css|scss|svg|png|jpe?g)$": "<rootDir>/node_modules/identity-obj-proxy",
+        "\\.(css|scss)$": "<rootDir>/node_modules/identity-obj-proxy",
+        "\\.(jpg|jpeg|png|svg)$": "<rootDir>/src/__mocks__/fileMock.ts",
         "^@assets(.*)$": "<rootDir>/assets/$1",
         "^@utils(.*)$": "<rootDir>/src/utils/$1",
         "^@context(.*)$": "<rootDir>/src/context/$1",

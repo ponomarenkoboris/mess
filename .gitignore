@@ -2,6 +2,5 @@
 /.pnp
 .pnp.js
 /coverage
-/src/layout/appLayout/header/__test__
 /build
 /dist

@@ -1,14 +1,10 @@
 import { useReducer, createContext, ReactNode, Dispatch, FC } from 'react';
+import type { Content } from '../store/models/chat.model'
 
-type MessageType = 'file' | 'text' | 'audio';
-export type Message = {
-    type: MessageType;
-    value: File | string;
-};
-export type ActionCreator = { type: ActionType; payload?: Message };
-type ChatContextType = [Message, Dispatch<ActionCreator>];
+export type ActionCreator = { type: ActionType; payload?: Content };
+type ChatContextType = [Content, Dispatch<ActionCreator>];
 
-const defaultState: Message = { type: 'text', value: '' };
+const defaultState: Content = { type: 'text', value: '' };
 const initialState: ChatContextType = [defaultState, () => {}]; // eslint-disable-line @typescript-eslint/no-empty-function
 const ChatInputContext = createContext<ChatContextType>(initialState);
 
@@ -19,7 +15,7 @@ enum ActionType {
     RESET = 'RESET',
 }
 
-const reducer = (state: Message, action: ActionCreator): Message => {
+const reducer = (state: Content, action: ActionCreator): Content => {
     switch (action.type) {
         case ActionType.TEXT:
             const textMessage = action.payload;
