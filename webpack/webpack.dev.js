@@ -2,7 +2,6 @@ const path = require('path')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const {BaseHrefWebpackPlugin} = require('base-href-webpack-plugin')
 
-console.log(path.resolve(__dirname, 'assets'))
 module.exports = {
     mode: 'development',
     devtool: 'cheap-module-source-map',

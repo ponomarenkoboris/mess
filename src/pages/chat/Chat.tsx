@@ -1,5 +1,6 @@
 import { FC, useRef, useContext, useState } from 'react';
 import { ChatInputContext, ActionType } from '@context/ChatContext';
+import { useParams } from 'react-router-dom';
 import { keyDownHandler, sendText, sendFile, sendAudio } from './chat.utils';
 import { SubmitFileSend, Document, Voice, AudioPlayer, EmojiSelector } from '@components/index';
 import file from '@assets/chat_page/file.svg';
@@ -8,6 +9,7 @@ import './Chat.scss';
 
 export const Chat: FC = () => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const { chatId } = useParams();
     const [messageState, dispatch] = useContext(ChatInputContext);
     const [isShowEmojiSelector, setIsShowEmojiSelector] = useState<boolean>(false);
 
@@ -40,7 +42,7 @@ export const Chat: FC = () => {
                         ref={textareaRef}
                         onKeyDown={(e) => keyDownHandler(e, textareaRef, dispatch)}
                         className='user-input_text'
-                        placeholder={`Message in #${'general'}`}
+                        placeholder={`Message in #${chatId}`}
                     ></textarea>
                 ) : (
                     <div className='user-input_uploaded-file'>
