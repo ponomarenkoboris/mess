@@ -1,17 +1,21 @@
-import { FC, ChangeEvent, useContext, useRef } from 'react';
-import { ChatInputContext, ActionType, Message } from '@context/ChatContext';
+import { FC, ChangeEvent, useRef } from 'react';
+import type { Content } from '@store/models/chat.model';
 import clip from '@assets/chat_page/clip.svg';
+import { ActionType, ActionCreator } from '../chatInput.utils';
 
-export const Document: FC = () => {
+interface DocumentProps {
+    onDocumentUpload: (content: ActionCreator) => void
+}
+
+export const Document: FC<DocumentProps> = ({ onDocumentUpload }) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [, dispatch] = useContext(ChatInputContext);
     const uploadDocsHandler = (event: ChangeEvent<HTMLInputElement>): void => {
         if (!event.target.files) return;
         const file = event.target.files.item(0);
         if (!file) return;
 
-        const payload: Message = { type: 'file', value: file };
-        dispatch({ type: ActionType.DOCUMENT, payload });
+        const payload: Content = { type: 'file', value: file };
+        onDocumentUpload({ type: ActionType.DOCUMENT, payload });
         event.target.value = '';
     };
 

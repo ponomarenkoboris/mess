@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
-import { ChatContextProvider } from '@context/ChatContext';
 import { AppLayout, GreenLayout } from '@layout/index';
 import { Chat } from './pages/chat/Chat';
 import { SignIn, SignUp } from './pages/auth';
@@ -19,9 +18,7 @@ export const App: FC = () => {
                 {
                     path: ':chatId',
                     element: (
-                        <ChatContextProvider>
-                            <Chat />
-                        </ChatContextProvider>
+                        <Chat />
                     ),
                 },
             ],

@@ -1,0 +1,87 @@
+.chat__user-input {
+    border-top: 2px solid rgba(0, 0, 0, 0.24);
+    height: 80px;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    button {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        outline: none;
+        background-color: inherit;
+        border: none;
+        border-radius: 50%;
+        padding: 10px 13px;
+        transition: background-color 200ms linear;
+
+        &:hover {
+            background-color: rgb(212, 212, 212);
+        }
+
+        &:active {
+            background-color: rgb(170, 169, 169);
+        }
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .user-input_text, .user-input_uploaded-file {
+        margin-right: 20px;
+        border-radius: 10px;
+        height: 38px;
+        padding: 10px 10px 10px;
+        width: 100%;
+        background-color: rgb(212, 212, 212);
+
+        img {
+            width: 20px;
+        }
+    }
+
+    .user-input_text {
+        border: none;
+        padding-bottom: 5px;
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+        resize: none;
+        outline: none;
+
+        &::-webkit-scrollbar {
+            visibility: hidden;
+            width: 0;
+        }
+    }
+
+    .user-input_uploaded-file {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .file-wrapper, .send-remove-buttons {
+            display: flex;
+            align-items: center;
+
+            img {
+                margin-right: 4px;
+            }
+        }
+    }
+
+    .user-input_smiles {
+        margin-right: 0;
+        padding-left: 13.5px;
+        height: 42px;
+        width: 42px;
+        
+        img {
+            width: 15px;
+        }
+    }
+}

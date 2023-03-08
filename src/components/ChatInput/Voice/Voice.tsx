@@ -1,14 +1,18 @@
-import { FC, useContext, useEffect, useReducer } from 'react';
+import { FC, useEffect, useReducer } from 'react';
 import { initialState, reducer, VoiceReducerActionType } from './voice.utils';
 import { recordTimer } from '@utils/utils';
-import { ChatInputContext, ActionType, Message } from '@context/ChatContext';
+import type { Content } from '@store/models/chat.model';
 import micro from '@assets/chat_page/microphone.svg';
 import square from '@assets/chat_page/square.svg';
 import './Voice.scss';
+import { ActionCreator, ActionType } from '../chatInput.utils';
 
-export const Voice: FC = () => {
+interface VoiceProps {
+    onStopRecord: (actionCreator: ActionCreator) => void
+}
+
+export const Voice: FC<VoiceProps> = ({ onStopRecord }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const [, contextDispatch] = useContext(ChatInputContext);
 
     const startRecording = () => {
         if (state.recorder) {
@@ -43,10 +47,10 @@ export const Voice: FC = () => {
     useEffect(() => {
         if (state.audio) {
             const url = URL.createObjectURL(state.audio);
-            const payload: Message = { type: 'audio', value: url };
-            contextDispatch({ type: ActionType.VOICE, payload });
+            const payload: Content = { type: 'audio', value: url };
+            onStopRecord({ type: ActionType.VOICE, payload });
         }
-    }, [state.audio, contextDispatch]);
+    }, [state.audio]);
 
     return !state.isRecording ? (
         <button className={'user-input_voice'} onClick={startRecording}>
