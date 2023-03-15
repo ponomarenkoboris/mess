@@ -9,7 +9,7 @@ interface SettingsInputProps {
 
 export const SettingsInput: FC<SettingsInputProps> = ({ labelClassName, ...props }) => {
     return (
-        <label className={labelClassName}>
+        <label className={`${labelClassName} settings-input`}>
             <input type='text' {...props} />
             <div className='writeble-element-indicator'></div>
         </label>

@@ -1,6 +1,6 @@
 @import '@mixin/settingsTextInput.mixin.scss';
 
-label {
+.settings-input {
     width: 100%;
     display: flex;
     justify-content: space-between;

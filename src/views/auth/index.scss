@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1;
     
     h1 {
         @include header-text;
@@ -36,10 +37,14 @@
             border-radius: 10px;
             background-color: #224957;
             outline: none;
-            border: none;
+            border: 1px solid #224957;
             color: #ffffff;
             padding: 12px 18px;
             font-size: 14px;
+
+            &:invalid {
+                border-color: red;
+            }
         }
     
         .form__actions {

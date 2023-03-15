@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { AppLayout, GreenLayout } from '@layout/index';
-import { Chat } from './pages/chat/Chat';
-import { SignIn, SignUp } from './pages/auth';
-import { Settings } from './pages/settings/Settings';
+import { Chat } from './views/chat/Chat';
+import { SignIn, SignUp } from './views/auth';
+import { Settings } from './views/settings/Settings';
 
 export const App: FC = () => {
     const router = createBrowserRouter([

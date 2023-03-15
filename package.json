@@ -6,8 +6,8 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
-        "build": "webpack --config webpack/webpack.config.js --env env=prod",
+        "start": "webpack serve --config webpack.config.js --env MODE=development",
+        "build": "webpack --config webpack.config.js --env MODE=production",
         "lint": "esw -w \"./src/**/*.{js,jsx,ts,tsx}\"",
         "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --config ./.prettierrc",
         "test": "jest"

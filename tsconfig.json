@@ -21,7 +21,8 @@
             "@hooks/*": ["src/hooks/*"],
             "@layout/*": ["src/layout/*"],
             "@mixin/*": ["src/mixin/*"],
-            "@store/*": ["src/store/*"]
+            "@store/*": ["src/store/*"],
+            "@views/*": ["src/views/*"]
         }
     },
     "include": ["src/**/*", "types.d.ts"],
