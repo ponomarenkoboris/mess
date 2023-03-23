@@ -43,10 +43,7 @@ enum HotKeys {
     CTRL = 'Control',
 }
 
-const keyDownListener = (
-    event: KeyboardEvent<HTMLTextAreaElement>,
-    textareaRef: RefObject<HTMLTextAreaElement>,
-): false | Content => {
+const keyDownListener = (event: KeyboardEvent<HTMLTextAreaElement>, textareaRef: RefObject<HTMLTextAreaElement>): false | Content => {
     if (!textareaRef.current?.value) {
         if (event.key === HotKeys.ENTER) event.preventDefault();
         return false;
@@ -66,7 +63,7 @@ const keyDownListener = (
         return payload;
     }
 
-    return false
+    return false;
 };
 
 type SendFunctProps = [Content['value'], Dispatch<ActionCreator>];
@@ -99,12 +96,4 @@ const sendAudio = (value: SendFunctProps) => {
     console.log('audio', value);
 };
 
-export { 
-    keyDownListener, 
-    sendFile, 
-    sendText, 
-    sendAudio,
-    reducer, 
-    defaultState,
-    ActionType
-};
+export { keyDownListener, sendFile, sendText, sendAudio, reducer, defaultState, ActionType };

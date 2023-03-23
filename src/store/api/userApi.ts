@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { LoginUserData, RegisterUserData, UpdateUserData, DeleteUserData } from '../models/userApi.model';
-import { IUser } from '../models/user.model';
+import { LoginUserData, RegisterUserData, UpdateUserData, DeleteUserData } from '@models/userApi.model';
+import { IUser } from '@models/user.model';
 
 const registerApi = createApi({
     reducerPath: 'registerApi',

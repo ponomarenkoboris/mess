@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import userActions from './actions';
 import placeholderPhoto from '@assets/users/lady.png';
-import { IUser } from '../models/user.model';
+import { IUser } from '@models/user.model';
 
 const initialState: IUser = {
     id: 1,

@@ -1,4 +1,4 @@
-import { IUser } from '@store/models/user.model';
+import { IUser } from '@models/user.model';
 import { ChangeEvent, Dispatch, MouseEvent } from 'react';
 import openEye from '@assets/registration/open_eye.svg';
 import closeEye from '@assets/registration/close_eye.svg';

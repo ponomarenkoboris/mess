@@ -4,7 +4,7 @@ export type SocialNetworks = {
     whatsapp?: string;
 };
 
-export interface IUser {
+export interface UserData {
     id: number;
     name: string;
     position: string;
@@ -13,7 +13,10 @@ export interface IUser {
     email: string;
     socialNetworks: SocialNetworks;
     timezone: string;
+}
+
+export type IUser = UserData & {
     friends?: Array<string>;
     channels?: Array<string>;
     groups?: Array<string>;
-}
+};

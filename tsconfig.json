@@ -22,7 +22,8 @@
             "@layout/*": ["src/layout/*"],
             "@mixin/*": ["src/mixin/*"],
             "@store/*": ["src/store/*"],
-            "@views/*": ["src/views/*"]
+            "@views/*": ["src/views/*"],
+            "@models/*": ["src/models/*"]
         }
     },
     "include": ["src/**/*", "types.d.ts"],

@@ -17,9 +17,7 @@ export const App: FC = () => {
             children: [
                 {
                     path: ':chatId',
-                    element: (
-                        <Chat />
-                    ),
+                    element: <Chat />,
                 },
             ],
         },

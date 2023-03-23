@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useAppSelector } from '@hooks/storeHooks/storeHooks';
-import type { SocialNetworks } from '@store/models/user.model';
+import type { SocialNetworks } from '@models/user.model';
 import linkedIn from '@assets/social_midia/linked_in.svg';
 import facebook from '@assets/social_midia/facebook.svg';
 import twitter from '@assets/social_midia/twitter.svg';

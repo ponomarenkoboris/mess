@@ -4,7 +4,7 @@ import { RightSidebar } from './rightSidebar/RightSidebar';
 import { LeftSidebar } from './leftSidebar/LeftSidebar';
 import { changeHTMLTitle } from '@utils/utils';
 import { useLocation } from 'react-router-dom';
-import './layout.scss';
+import './AppLayout.scss';
 
 interface ILayoutProps {
     children: ReactNode;

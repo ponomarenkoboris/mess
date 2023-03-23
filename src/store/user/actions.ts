@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../models/user.model';
+import { IUser } from '@models/user.model';
 
 const updateUserData = (state: IUser, action: PayloadAction<Partial<IUser>>): IUser => {
     state = { ...state, ...action.payload };

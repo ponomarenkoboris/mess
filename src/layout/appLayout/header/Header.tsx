@@ -6,7 +6,7 @@ import search from '@assets/header/combined_shape_352.svg';
 import human from '@assets/header/combined_shape_363.svg';
 import bell from '@assets/header/combined_shape_366.svg';
 import more from '@assets/header/more.svg';
-import './header.scss';
+import './Header.scss';
 
 const debounce = debounceCreator();
 

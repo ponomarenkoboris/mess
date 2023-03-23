@@ -10,7 +10,8 @@
         "build": "webpack --config webpack.config.js --env MODE=production",
         "lint": "esw -w \"./src/**/*.{js,jsx,ts,tsx}\"",
         "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --config ./.prettierrc",
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.1",

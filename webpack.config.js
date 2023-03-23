@@ -24,7 +24,8 @@ module.exports = (env) => ({
             "@layout": path.resolve(__dirname, 'src/layout'),
             "@mixin": path.resolve(__dirname, 'src/mixin'),
             "@store": path.resolve(__dirname, 'src/store'),
-            "@views": path.resolve(__dirname, 'src/views')
+            "@views": path.resolve(__dirname, 'src/views'),
+            "@models": path.resolve(__dirname, 'src/models')
         },
         extensions: ['.tsx', '.ts', '.js'],
     },

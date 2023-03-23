@@ -1,10 +1,10 @@
 import { FC, ChangeEvent, useRef } from 'react';
-import type { Content } from '@store/models/chat.model';
+import type { Content } from '@models/chat.model';
 import clip from '@assets/chat_page/clip.svg';
-import { ActionType, ActionCreator } from '../chatInput.utils';
+import { ActionType, ActionCreator } from '../ChatInput/chatInput.utils';
 
 interface DocumentProps {
-    onDocumentUpload: (content: ActionCreator) => void
+    onDocumentUpload: (content: ActionCreator) => void;
 }
 
 export const Document: FC<DocumentProps> = ({ onDocumentUpload }) => {

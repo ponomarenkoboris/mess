@@ -10,15 +10,15 @@ interface EmojiSelectorProps {
 }
 
 const groups = Object.keys(emojies);
-const emojiGroup = emojies[groups[0] as keyof typeof emojies]
+const emojiGroup = emojies[groups[0] as keyof typeof emojies];
 
-type EmojiGroup = typeof emojiGroup
+type EmojiGroup = typeof emojiGroup;
 
-const defaultState: EmojiState<EmojiGroup> = { 
-    name: groups[0], 
-    isShowEmojiSelector: false, 
-    currentEmojies: emojiGroup
-}
+const defaultState: EmojiState<EmojiGroup> = {
+    name: groups[0],
+    isShowEmojiSelector: false,
+    currentEmojies: emojiGroup,
+};
 
 const listenerCreator = (closeCallback: () => void): ((event: globalThis.MouseEvent) => void) => {
     return (event: globalThis.MouseEvent) => {
@@ -29,8 +29,7 @@ const listenerCreator = (closeCallback: () => void): ((event: globalThis.MouseEv
 };
 
 export const EmojiSelector: FC<EmojiSelectorProps> = ({ insertEmoji }) => {
-    
-    const [{ name, isShowEmojiSelector, currentEmojies }, dispatch] = useReducer(reducer<EmojiGroup>, defaultState)
+    const [{ name, isShowEmojiSelector, currentEmojies }, dispatch] = useReducer(reducer<EmojiGroup>, defaultState);
     const toogleEmojiSelector = () => dispatch({ type: ActionTypes.IS_SHOW, payload: !isShowEmojiSelector });
     const listener = listenerCreator(toogleEmojiSelector);
 
@@ -41,8 +40,8 @@ export const EmojiSelector: FC<EmojiSelectorProps> = ({ insertEmoji }) => {
         if (target.className.match('group__button')) {
             const name = target.dataset.group as keyof typeof emojies;
             const list = emojies[name];
-            dispatch({ type: ActionTypes.SET_NAME, payload: name })
-            dispatch({ type: ActionTypes.SET_CURRENT_EMOJIES, payload: list })
+            dispatch({ type: ActionTypes.SET_NAME, payload: name });
+            dispatch({ type: ActionTypes.SET_CURRENT_EMOJIES, payload: list });
             return;
         }
 
@@ -52,8 +51,6 @@ export const EmojiSelector: FC<EmojiSelectorProps> = ({ insertEmoji }) => {
             toogleEmojiSelector();
         }
     };
-
-    
 
     useEffect(() => {
         if (isShowEmojiSelector) {

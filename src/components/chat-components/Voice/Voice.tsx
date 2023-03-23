@@ -1,14 +1,14 @@
 import { FC, useEffect, useReducer } from 'react';
 import { initialState, reducer, VoiceReducerActionType } from './voice.utils';
 import { recordTimer } from '@utils/utils';
-import type { Content } from '@store/models/chat.model';
+import type { Content } from '@models/chat.model';
 import micro from '@assets/chat_page/microphone.svg';
 import square from '@assets/chat_page/square.svg';
 import './Voice.scss';
-import { ActionCreator, ActionType } from '../chatInput.utils';
+import { ActionCreator, ActionType } from '../ChatInput/chatInput.utils';
 
 interface VoiceProps {
-    onStopRecord: (actionCreator: ActionCreator) => void
+    onStopRecord: (actionCreator: ActionCreator) => void;
 }
 
 export const Voice: FC<VoiceProps> = ({ onStopRecord }) => {

@@ -15,5 +15,6 @@ module.exports = {
         "^@mixin(.*)$": "<rootDir>/src/mixin/$1",
         "^@store(.*)$": "<rootDir>/src/store/$1",
         "^@views(.*)$": "<rootDir>/src/views/$1",
+        "^@models(.*)$": "<rootDir>/src/models/$1"
     },
 };

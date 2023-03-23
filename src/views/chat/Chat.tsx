@@ -1,11 +1,10 @@
 import { FC } from 'react';
-import { useAppSelector } from '@hooks/storeHooks/storeHooks'
+import { useAppSelector } from '@hooks/storeHooks/storeHooks';
 import { ChatInput } from '@components/index';
 import './Chat.scss';
 
 export const Chat: FC = () => {
-    const { user, chats } = useAppSelector(state => state)
-
+    const { user, chats } = useAppSelector((state) => state);
 
     return (
         <main className='chat'>
@@ -17,7 +16,7 @@ export const Chat: FC = () => {
                         <p key={idx}>message</p>
                     ))
                     } */}
-                {chats[0].messages.map(message => (
+                {chats[0].messages.map((message) => (
                     <div key={message.id} className={user.username === message.owner ? 'message owner' : 'message'}>
                         <p className='message__content'>{message.content.value as string}</p>
                         <p className='message__date'>{message.sendDate}</p>

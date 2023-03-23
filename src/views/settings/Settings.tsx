@@ -5,8 +5,8 @@ import { reducer, ActionType, updateProfilePhoto, callClickEvent, tooglePassword
 import { updateUserData } from '@store/user/user';
 import closeEye from '@assets/registration/close_eye.svg';
 import './Settings.scss';
-import { SocialNetworks } from '@store/models/user.model';
-import { SettingsInput } from '@components/SettingsInput/SettingsInput';
+import { SocialNetworks } from '@models/user.model';
+import { SettingsInput } from '@components/index';
 
 export const Settings: FC = () => {
     const userData = useAppSelector((store) => store.user);
