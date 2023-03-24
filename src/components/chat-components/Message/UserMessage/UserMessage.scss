@@ -1,0 +1,29 @@
+.message {
+    width: max-content;
+    margin: 5px 0;
+    background-color: #e2e2e2;
+    padding: 5px 10px;
+    border-radius: 15px 15px 15px 5px;
+    white-space: pre-wrap;
+
+    p {
+        margin: 0;
+    }
+
+    .message__content {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .message__date {
+        font-size: 8px;
+        text-align: right;
+    }
+}
+
+.owner {
+    color: #ffffff;
+    background-color: var(--dark-green);
+    border-radius: 15px 15px 5px 15px;
+    align-self: flex-end;
+}

@@ -1,23 +1,23 @@
 import { FC, useState, useReducer, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '@hooks/storeHooks/storeHooks';
+import { useTypedSelector } from '@hooks/storeHooks/storeHooks';
+import useUserActions from '@hooks/UseUserActions';
 import { objectsAreEqual } from '@utils/utils';
 import { reducer, ActionType, updateProfilePhoto, callClickEvent, tooglePasswordVisibility } from './settings.utils';
-import { updateUserData } from '@store/user/user';
 import closeEye from '@assets/registration/close_eye.svg';
 import './Settings.scss';
 import { SocialNetworks } from '@models/user.model';
 import { SettingsInput } from '@components/index';
 
 export const Settings: FC = () => {
-    const userData = useAppSelector((store) => store.user);
-    const storeDispatch = useAppDispatch();
+    const userData = useTypedSelector((store) => store.userReducer);
+    const { updateUserData } = useUserActions();
     const initialState = userData;
     const [pass, setPass] = useState({ password: '', rePassword: '' });
     const [user, dispatch] = useReducer(reducer, initialState);
     const [isProfileSubmitAvaliable, setIsProfileSubmitAvaliable] = useState<boolean>(false);
 
     const applayProfileChanges = () => {
-        storeDispatch(updateUserData(user));
+        updateUserData(user);
         setIsProfileSubmitAvaliable(false);
         // TODO applay user profile changes to the server
     };

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Chat } from '@models/chat.model';
-import chatActions from './actions';
+import chatActions from './actionsCreators';
 
 const initialState: Chat[] = [
     {
@@ -40,5 +40,5 @@ const chatSlice = createSlice({
     },
 });
 
-export const { appendMessage, deleteMessage } = chatSlice.actions;
+export const allChatActions = chatSlice.actions;
 export default chatSlice.reducer;

@@ -1,6 +1,6 @@
 import { FC, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLoginUserMutation } from '@store/api/userApi';
+import { useLoginUserMutation } from '@store/user/api/userApi';
 import '../index.scss';
 
 export const SignIn: FC = () => {

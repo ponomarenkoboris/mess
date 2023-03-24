@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import userActions from './actions';
+import userActions from './actionsCreators';
 import placeholderPhoto from '@assets/users/lady.png';
 import { IUser } from '@models/user.model';
 
@@ -24,5 +24,5 @@ const userSlice = createSlice({
     },
 });
 
-export const { updateUserData } = userSlice.actions;
+export const allUserActions = userSlice.actions;
 export default userSlice.reducer;

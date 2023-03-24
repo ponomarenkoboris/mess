@@ -10,7 +10,7 @@
     padding: 0 5px;
 
     &:hover {
-        background-color: #224957;
+        background-color: var(--dark-green);
 
         .writeble-element-indicator {
             visibility: visible;
@@ -19,7 +19,7 @@
 
     &:focus-within {
         cursor: text;
-        background-color: #224957;
+        background-color: var(--dark-green);
 
         .writeble-element-indicator {
             visibility: hidden;

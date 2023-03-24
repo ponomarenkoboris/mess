@@ -10,8 +10,8 @@
         "build": "webpack --config webpack.config.js --env MODE=production",
         "lint": "esw -w \"./src/**/*.{js,jsx,ts,tsx}\"",
         "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\" --config ./.prettierrc",
-        "test": "jest",
-        "test:watch": "jest --watch"
+        "test": "jest --watch -o",
+        "coverage": "jest --coverage --watchAll --collectCoveargeFrom='src/**/*.{ts,tsx}' --collectCoveargeFrom='!src/**/*.{model}.{ts,tsx}'"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.1",

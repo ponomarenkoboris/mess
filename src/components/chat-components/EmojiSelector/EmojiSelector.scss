@@ -1,6 +1,6 @@
 @mixin active-button {
     background-color: initial;
-    border-bottom: 1px solid #224957;
+    border-bottom: 1px solid var(--dark-green);
 }
 
 .smiles__list {

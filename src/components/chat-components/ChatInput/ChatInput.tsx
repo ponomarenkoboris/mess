@@ -1,6 +1,7 @@
 import { FC, memo, useRef, KeyboardEvent, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@hooks/storeHooks/storeHooks';
+import { useTypedSelector } from '@hooks/storeHooks/storeHooks';
+import useChatActions from '@hooks/useChatActions';
 import { Document } from '../Document/Document';
 import { Voice } from '../Voice/Voice';
 import { SubmitFileSend } from '../SubmitFileSend/SubmitFileSend';
@@ -8,16 +9,15 @@ import { EmojiSelector } from '../EmojiSelector/EmojiSelector';
 import { Message } from '@models/chat.model';
 import { AudioPlayer } from '../AudioPlayer/AudioPlayer';
 import file from '@assets/chat_page/file.svg';
-import { appendMessage } from '@store/chat/chat';
 import { sendFile, sendAudio, keyDownListener, reducer, defaultState, ActionType, ActionCreator } from './chatInput.utils';
 import './ChatInput.scss';
 
 const Input: FC = () => {
     const { chatId } = useParams();
     const textareaRef = useRef<HTMLTextAreaElement>(null);
-    const storeDispatch = useAppDispatch();
+    const { appendMessage } = useChatActions();
     const [messageState, dispatch] = useReducer(reducer, defaultState);
-    const user = useAppSelector((store) => store.user);
+    const user = useTypedSelector((store) => store.userReducer);
 
     const submitSend = () => {
         const { type, value } = messageState;
@@ -35,7 +35,7 @@ const Input: FC = () => {
                 sendDate: new Date().toLocaleDateString(),
                 chatId: 1,
             };
-            storeDispatch(appendMessage(message));
+            appendMessage(message);
         }
     };
 

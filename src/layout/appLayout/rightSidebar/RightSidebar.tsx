@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { useAppSelector } from '@hooks/storeHooks/storeHooks';
+import { useTypedSelector } from '@hooks/storeHooks/storeHooks';
 import type { SocialNetworks } from '@models/user.model';
 import linkedIn from '@assets/social_midia/linked_in.svg';
 import facebook from '@assets/social_midia/facebook.svg';
@@ -12,7 +12,7 @@ import './RightSidebar.scss';
 export const RightSidebar: FC = () => {
     const [isInteractionMenu, setInteractionMenu] = useState<boolean>(false);
     const [isSidebar, setIsSidebar] = useState<boolean>(true);
-    const user = useAppSelector((state) => state.user);
+    const user = useTypedSelector((state) => state.userReducer);
 
     return (
         <div className={isSidebar ? 'right-sidebar' : 'small'}>
