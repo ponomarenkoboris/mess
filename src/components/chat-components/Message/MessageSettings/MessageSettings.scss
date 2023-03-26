@@ -1,40 +1,49 @@
-.message-settings {
+.message-settings__wrapper {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
     position: absolute;
-    width: 150px;
-    height: fit-content;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
 
-    .stettings__option {
-        width: 100%;
-        padding: 4px 10px;
-        display: block;
-        text-align: left;
-        font-weight: bold;
-        outline: none;
-        border: none;
-        margin-bottom: 5px;
-        cursor: pointer;
-        background-color: inherit;
-        border-radius: 5px;
-        transition: background-color 200ms linear;
-
-        &:hover {
-            background-color: #e2e2e2;
+    .message-settings {
+        position: absolute;
+        width: 150px;
+        height: fit-content;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    
+        .stettings__option {
+            width: 100%;
+            padding: 4px 10px;
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            margin-bottom: 5px;
+            cursor: pointer;
+            background-color: inherit;
+            border-radius: 5px;
+            transition: background-color 200ms linear;
+    
+            &:hover {
+                background-color: #e2e2e2;
+            }
+    
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    .delete {
-        color: initial;
-        &:hover {
-            color: #ffffff;
-            background-color: rgba(255, 4, 4, 0.781);
+    
+        .delete {
+            color: initial;
+            &:hover {
+                color: #ffffff;
+                background-color: rgba(255, 4, 4, 0.781);
+            }
         }
     }
 }

@@ -1,17 +1,19 @@
-import { createContext, ReactNode, FC, useReducer } from "react"
+import { createContext, ReactNode, FC, useReducer, Dispatch } from "react"
+import { ContextState, defaultContext, reducer, Action } from "./utils"
 import { MessageSettings } from "../MessageSettings/MessageSettings"
-import { ContextState, defaultContext, reducer } from "./utils"
 
-export const MessageContext = createContext({} as ContextState)
+type MessageContextType = ContextState & { dispatch: Dispatch<Action> }
+
+export const MessageContext = createContext({} as MessageContextType)
 
 interface ContextProviderProps {
     children: ReactNode
 }
 
 export const MessageContextProvider: FC<ContextProviderProps> = ({ children }) => {
-    const [context, dispatch] = useReducer(reducer, defaultContext)
+    const [{ message, settings }, dispatch] = useReducer(reducer, defaultContext)
     return (
-        <MessageContext.Provider value={''}>
+        <MessageContext.Provider value={{ message, settings, dispatch }}>
             {children}
             <MessageSettings />
         </MessageContext.Provider>

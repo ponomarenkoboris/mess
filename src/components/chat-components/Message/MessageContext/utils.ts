@@ -13,7 +13,8 @@ enum ActionTypes {
     HIDE_SETTINGS = 'HIDE_SETTINGS'
 }
 
-type Action = { type: ActionTypes.DISPLAY_SETTINGS | ActionTypes.HIDE_SETTINGS , payload: ContextState }
+export type Action = { type: ActionTypes.DISPLAY_SETTINGS, payload: ContextState } 
+    | { type: ActionTypes.HIDE_SETTINGS }
 
 const defaultContext: ContextState = {
     message: {} as ContextMessage,
