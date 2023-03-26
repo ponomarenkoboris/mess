@@ -1,18 +1,28 @@
 import { ContentType } from '@models/chat.model';
-import { render, screen } from '@testing-library/react';
-import { UserMessage } from '../UserMessage/Message';
+import { render } from '@testing-library/react';
+import { UserMessage } from '../UserMessage/UserMessage';
 
 const messageMock = {
     username: 'username',
-    owner: 'usename',
+    owner: 'username',
     content: { type: 'text' as ContentType, value: 'something value' },
     sendDate: '23.02.2023',
 };
 
 describe('Testing message components set', () => {
-    render(<UserMessage {...messageMock} />);
-    test('Should render UserMessage component', () => {
-        const textElement = screen.getByText(messageMock.sendDate);
-        expect(textElement).toBeInTheDocument();
+    
+    test('Should render owner UserMessage component', () => {
+        const { container } = render(<UserMessage {...messageMock} />);
+        const isOwner = container.querySelector('.message')?.classList.contains('owner');
+        expect(container).toMatchSnapshot();
+        expect(isOwner).toBe(true);
     });
+
+    test('Should render not owner UserMessage component', () => {
+        messageMock.username = 'notusername'
+        const { container } = render(<UserMessage {...messageMock} />);
+        const isOwner = container.querySelector('.message')?.classList.contains('owner');
+        expect(container).toMatchSnapshot();
+        expect(isOwner).toBe(false);
+    })
 });
