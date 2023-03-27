@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useContext, memo } from 'react';
+import { FC, MouseEvent, useContext } from 'react';
 import type { Message } from '@models/chat.model';
 import { MessageContext } from '../MessageContext/MessageContext';
 import { ActionTypes } from '../MessageContext/utils';
@@ -10,14 +10,16 @@ type UserMessageProps = Message & { username: string };
  * // BUG
  * Uncaught TypeError: Cannot read properties of null (reading 'target')
  */
-const Message: FC<UserMessageProps> = (props) => {
+export const UserMessage: FC<UserMessageProps> = (props) => {
     const { dispatch } = useContext(MessageContext);
 
     const rightMouseClick = (event: MouseEvent<HTMLDivElement>) => {
+        if (props.username !== props.owner) return
         event.preventDefault()
-        const axisX = props.username === props.owner ? event.pageX - SETTINGS_MODAL_WIDTH : event.pageX;
+        const axisX = event.pageX - SETTINGS_MODAL_WIDTH;
         const settings = { isOpen: true, axisX, axisY: event.pageY };
-        dispatch({ type: ActionTypes.DISPLAY_SETTINGS, payload: { message: props, settings } })
+        const modal = { isOpen: false }
+        dispatch({ type: ActionTypes.DISPLAY_SETTINGS, payload: { message: props, settings, modal } })
     }
 
     return (
@@ -30,5 +32,3 @@ const Message: FC<UserMessageProps> = (props) => {
         </div>
     );
 };
-
-export const UserMessage = memo(Message);
